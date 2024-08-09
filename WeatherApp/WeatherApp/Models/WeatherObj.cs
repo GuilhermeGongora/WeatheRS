@@ -1,9 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CompleteWeatherApp.Models
+namespace WeatherApp.Models
 {
     public class ForecastInfo
     {
