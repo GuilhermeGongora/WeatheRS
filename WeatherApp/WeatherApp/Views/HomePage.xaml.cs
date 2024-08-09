@@ -20,14 +20,14 @@ namespace WeatherApp.Views
             GetWeatherInfo();
         }
 
-        private string Location = "France";
+        private string Location = "Brazil";
 
         private async void GetWeatherInfo()
         {
             var url = $"https://api.openweathermap.org/data/2.5/weather?q={Location}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
 
             var result = await ApiCaller.Get(url);
-            if(result.Successful)
+            if (result.Successful)
             {
                 try
                 {
@@ -41,13 +41,17 @@ namespace WeatherApp.Views
                     windTxt.Text = $"{weatherInfo.wind.speed} m/s";
                     cloudinessTxt.Text = $"{weatherInfo.clouds.all}%";
 
-                    var dt = new DateTime().ToUniversalTime().AddSeconds(weatherInfo.dt);
-                    dateTxt.Text = dt.ToString("dddd, MMM dd").ToUpper();
+                    // Converte para UTC
+                    var utcDateTime = DateTimeOffset.FromUnixTimeSeconds(weatherInfo.dt).UtcDateTime;
 
+                    // Aplica o fuso horário fornecido pela API (em segundos)
+                    var localDateTime = utcDateTime.AddSeconds(weatherInfo.timezone);
+
+                    dateTxt.Text = localDateTime.ToString("dddd, MMM dd").ToUpper();
                 }
                 catch (Exception ex)
                 {
-
+                    // Tratar exceção
                 }
             }
             else
