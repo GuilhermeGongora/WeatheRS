@@ -116,6 +116,16 @@
                                         <Label Text="°" TextColor="White" FontSize="23" HorizontalOptions="Center"/>
                                     </StackLayout>
                                 </StackLayout>
+                            </Frame> <Frame CornerRadius="20" BackgroundColor="#758ABA" Padding="10">
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Label x:Name="dayFiveTxt" Text="Wednesday" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                                    <Label x:Name="dateFiveTxt" Margin="0,-5,0,0" Text="04 Dec" TextColor="White" FontSize="10" HorizontalOptions="Center"/>
+                                    <Image x:Name="iconFiveImg" Source="cloud.png" Margin="0,20" WidthRequest="30" HeightRequest="22"/>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0">
+                                        <Label x:Name="tempFiveTxt" Text="25" TextColor="White" FontSize="23" HorizontalOptions="Center"/>
+                                        <Label Text="°" TextColor="White" FontSize="23" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                </StackLayout>
                             </Frame>
                         </StackLayout>
                 </StackLayout>
