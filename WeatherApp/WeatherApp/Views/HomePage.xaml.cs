@@ -21,7 +21,7 @@ namespace WeatherApp.Views
             GetForecast();
         }
 
-        private string Location = "Brazil";
+        private string Location = "Ireland";
 
         private async void GetWeatherInfo()
         {
@@ -101,6 +101,11 @@ namespace WeatherApp.Views
                     dateFourTxt.Text = DateTime.Parse(allList[3].dt_txt).ToString("dd MMM");
                     iconFourImg.Source = $"w{allList[3].weather[0].icon}";
                     tempFourTxt.Text = allList[3].main.temp.ToString("0");
+                    
+                    dayFiveTxt.Text = DateTime.Parse(allList[4].dt_txt).ToString("dddd");
+                    dateFiveTxt.Text = DateTime.Parse(allList[4].dt_txt).ToString("dd MMM");
+                    iconFiveImg.Source = $"w{allList[4].weather[0].icon}";
+                    tempFiveTxt.Text = allList[4].main.temp.ToString("0");
 
                 }
                 catch (Exception ex)
