@@ -87,6 +87,7 @@ namespace WeatherApp.Views
                     var localDateTime = utcDateTime.AddSeconds(weatherInfo.timezone);
 
                     dateTxt.Text = localDateTime.ToString("dddd, MMM dd").ToUpper();
+                    GetForecast();
                 }
                 catch (Exception ex)
                 {
