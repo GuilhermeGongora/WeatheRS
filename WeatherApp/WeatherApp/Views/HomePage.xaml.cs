@@ -21,7 +21,9 @@ namespace WeatherApp.Views
             GetForecast();
         }
 
-        private string Location = "Ireland";
+        private string Location { get; set; } = "Ireland";
+        public double Latitude { get; set; }    
+        public double Longitude { get; set; }   
 
         private async void GetWeatherInfo()
         {
