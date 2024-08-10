@@ -18,8 +18,7 @@ namespace WeatherApp.Views
         public HomePage()
         {
             InitializeComponent();
-            GetWeatherInfo();
-            GetForecast();
+            GetCoordinates();
         }
 
         private string Location { get; set; } = "Ireland";
@@ -38,6 +37,8 @@ namespace WeatherApp.Views
                     Latitude = location.Latitude;
                     Longitude = location.Longitude;
                     Location = await GetCity(location);
+
+                    GetWeatherInfo();
                 }
             }
             catch (Exception ex)
@@ -50,7 +51,14 @@ namespace WeatherApp.Views
         private async Task<string> GetCity(Location location)
         {
 
-            
+            var places = await Geocoding.GetPlacemarksAsync(location);
+            var currentPlace = places?.FirstOrDefault(); 
+
+            if (currentPlace != null) {
+                return $"{currentPlace.Locality},{currentPlace.CountryName}";
+
+            }
+            return null ;
         }
 
         private async void GetWeatherInfo()
