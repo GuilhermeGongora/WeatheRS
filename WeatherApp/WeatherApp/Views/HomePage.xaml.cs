@@ -18,6 +18,7 @@ namespace WeatherApp.Views
         {
             InitializeComponent();
             GetWeatherInfo();
+            GetForecast();
         }
 
         private string Location = "Brazil";
