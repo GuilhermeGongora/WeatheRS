@@ -60,6 +60,21 @@ namespace WeatherApp.Views
             }
             return null ;
         }
+        private string CorrectLocationName(string name)
+        {
+            var corrections = new Dictionary<string, string>
+    {
+        { "AK''YAR", "Aviação" },
+        // Adicione mais correções conforme necessário
+    };
+
+            if (corrections.ContainsKey(name))
+            {
+                return corrections[name];
+            }
+
+            return name;
+        }
 
         private async void GetWeatherInfo()
         {
@@ -73,7 +88,7 @@ namespace WeatherApp.Views
                     var weatherInfo = JsonConvert.DeserializeObject<WeatherInfo>(result.Response);
                     descriptionTxt.Text = weatherInfo.weather[0].description.ToUpper();
                     iconImg.Source = $"w{weatherInfo.weather[0].icon}";
-                    cityTxt.Text = weatherInfo.name.ToUpperInvariant();
+                    cityTxt.Text = CorrectLocationName(weatherInfo.name).ToUpperInvariant();
                     temperatureTxt.Text = weatherInfo.main.temp.ToString("0");
                     humidityTxt.Text = $"{weatherInfo.main.humidity}%";
                     pressureTxt.Text = $"{weatherInfo.main.pressure} hpa";
