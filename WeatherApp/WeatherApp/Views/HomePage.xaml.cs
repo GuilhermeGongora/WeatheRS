@@ -55,7 +55,7 @@ namespace WeatherApp.Views
             var currentPlace = places?.FirstOrDefault(); 
 
             if (currentPlace != null) {
-                return $"{currentPlace.Location},{currentPlace.CountryName}";
+                return $"{currentPlace.Locality},{currentPlace.CountryName}";
 
             }
             return null ;
