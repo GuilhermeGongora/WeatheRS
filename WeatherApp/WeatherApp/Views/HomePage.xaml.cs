@@ -55,7 +55,7 @@ namespace WeatherApp.Views
             var currentPlace = places?.FirstOrDefault(); 
 
             if (currentPlace != null) {
-                return $"{currentPlace.Locality},{currentPlace.CountryName}";
+                return $"{currentPlace.Location},{currentPlace.CountryName}";
 
             }
             return null ;
@@ -73,7 +73,7 @@ namespace WeatherApp.Views
                     var weatherInfo = JsonConvert.DeserializeObject<WeatherInfo>(result.Response);
                     descriptionTxt.Text = weatherInfo.weather[0].description.ToUpper();
                     iconImg.Source = $"w{weatherInfo.weather[0].icon}";
-                    cityTxt.Text = weatherInfo.name.ToUpper();
+                    cityTxt.Text = weatherInfo.name.ToUpperInvariant();
                     temperatureTxt.Text = weatherInfo.main.temp.ToString("0");
                     humidityTxt.Text = $"{weatherInfo.main.humidity}%";
                     pressureTxt.Text = $"{weatherInfo.main.pressure} hpa";
