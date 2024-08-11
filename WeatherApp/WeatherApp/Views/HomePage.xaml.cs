@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using Xamarin.Forms.Maps;
 using System.Threading.Tasks;
 using WeatherApp.Helper;
 using WeatherApp.Models;
@@ -15,10 +17,39 @@ namespace WeatherApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
+        private HttpClient _httpClient;
+
         public HomePage()
         {
             InitializeComponent();
             GetCoordinates();
+            _httpClient = new HttpClient();
+            LoadSatelliteMap();
+        }
+        private async void LoadSatelliteMap()
+        {
+            // URL para obter a imagem de satélite (isso é apenas um exemplo e pode precisar de ajustes)
+            var url = "http://tile.openweathermap.org/map/satellite/{z}/{x}/{y}.png?appid=0254e13028fbf335e64c91ff361ce46f";
+
+            // Obtendo o stream da imagem (isso pode não ser necessário dependendo de como você deseja usar a imagem)
+            var imageStream = await _httpClient.GetStreamAsync(url);
+            var satelliteImage = ImageSource.FromStream(() => imageStream);
+
+            // Exemplo de coordenadas fixas para latitude e longitude
+            double latitude = -23.5505; // Substitua pelo valor desejado
+            double longitude = -46.6333; // Substitua pelo valor desejado
+
+            // Configuração básica do mapa
+            myMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(latitude, longitude), Distance.FromMiles(10)));
+
+            // Adicionando um pin
+            var pin = new Pin
+            {
+                Label = "Local",
+                Position = new Position(latitude, longitude),
+                Type = PinType.Place
+            };
+            myMap.Pins.Add(pin);
         }
 
         private string Location { get; set; } = "Ireland";
@@ -64,7 +95,7 @@ namespace WeatherApp.Views
         {
             var corrections = new Dictionary<string, string>
     {
-        { "AK''YAR", "Aviação" },
+        { "Ak”yar", "Aviação" },
         // Adicione mais correções conforme necessário
     };
 
