@@ -23,38 +23,55 @@ namespace WeatherApp.Views
         {
             InitializeComponent();
             GetCoordinates();
+            // Ajusta o tamanho do mapa
+            myMap.WidthRequest = 300;  // Ajuste a largura conforme necessário
+            myMap.HeightRequest = 400; // Ajuste a altura conforme necessário
             _httpClient = new HttpClient();
             LoadSatelliteMap();
         }
+
         private async void LoadSatelliteMap()
         {
-            // URL para obter a imagem de satélite (isso é apenas um exemplo e pode precisar de ajustes)
-            var url = "http://tile.openweathermap.org/map/satellite/{z}/{x}/{y}.png?appid=0254e13028fbf335e64c91ff361ce46f";
+            // Substitua {z}, {x}, {y} e YOUR_API_KEY pelos valores reais
+            int z = 10; // Nível de zoom
+            int x = 523; // Coordenada x do tile
+            int y = 388; // Coordenada y do tile
+            string apiKey = "0254e13028fbf335e64c91ff361ce46f"; // Sua chave de API
 
-            // Obtendo o stream da imagem (isso pode não ser necessário dependendo de como você deseja usar a imagem)
-            var imageStream = await _httpClient.GetStreamAsync(url);
-            var satelliteImage = ImageSource.FromStream(() => imageStream);
+            // URL para obter a imagem de satélite
+            var url = $"https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={apiKey}";
 
-            // Exemplo de coordenadas fixas para latitude e longitude
-            double latitude = -23.5505; // Substitua pelo valor desejado
-            double longitude = -46.6333; // Substitua pelo valor desejado
-
-            // Configuração básica do mapa
-            myMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(latitude, longitude), Distance.FromMiles(10)));
-
-            // Adicionando um pin
-            var pin = new Pin
+            try
             {
-                Label = "Local",
-                Position = new Position(latitude, longitude),
-                Type = PinType.Place
-            };
-            myMap.Pins.Add(pin);
+                // Obtendo o stream da imagem
+                var imageStream = await _httpClient.GetStreamAsync(url);
+                var satelliteImage = ImageSource.FromStream(() => imageStream);
+
+                // Exemplo de coordenadas fixas para latitude e longitude
+                double latitude = -23.5505; // Substitua pelo valor desejado
+                double longitude = -46.6333; // Substitua pelo valor desejado
+
+                // Configuração básica do mapa
+                myMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(latitude, longitude), Distance.FromMiles(10)));
+
+                // Adicionando um pin
+                var pin = new Pin
+                {
+                    Label = "Local",
+                    Position = new Position(latitude, longitude),
+                    Type = PinType.Place
+                };
+                myMap.Pins.Add(pin);
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Request error: {ex.Message}");
+            }
         }
 
         private string Location { get; set; } = "Ireland";
-        public double Latitude { get; set; }    
-        public double Longitude { get; set; }   
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
         private async void GetCoordinates()
         {
@@ -81,23 +98,23 @@ namespace WeatherApp.Views
 
         private async Task<string> GetCity(Location location)
         {
-
             var places = await Geocoding.GetPlacemarksAsync(location);
-            var currentPlace = places?.FirstOrDefault(); 
+            var currentPlace = places?.FirstOrDefault();
 
-            if (currentPlace != null) {
+            if (currentPlace != null)
+            {
                 return $"{currentPlace.Locality},{currentPlace.CountryName}";
-
             }
-            return null ;
+            return null;
         }
+
         private string CorrectLocationName(string name)
         {
             var corrections = new Dictionary<string, string>
-    {
-        { "Ak”yar", "Aviação" },
-        // Adicione mais correções conforme necessário
-    };
+            {
+                { "Ak”yar", "Aviação" },
+                // Adicione mais correções conforme necessário
+            };
 
             if (corrections.ContainsKey(name))
             {
@@ -149,7 +166,7 @@ namespace WeatherApp.Views
         private async void GetForecast()
         {
             var url = $"https://api.openweathermap.org/data/2.5/forecast?q={Location}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
-            var result = await ApiCaller.Get(url) ;
+            var result = await ApiCaller.Get(url);
             if (result.Successful)
             {
                 try
@@ -160,7 +177,6 @@ namespace WeatherApp.Views
 
                     foreach (var list in forcastInfo.list)
                     {
-                        //var date = DateTime.ParseExact(list.dt_txt, "yyyy-MM-dd hh:mm:ss", CultureInfo.InvariantCulture);
                         var date = DateTime.Parse(list.dt_txt);
 
                         if (date > DateTime.Now && date.Hour == 0 && date.Minute == 0 && date.Second == 0)
@@ -186,7 +202,7 @@ namespace WeatherApp.Views
                     dateFourTxt.Text = DateTime.Parse(allList[3].dt_txt).ToString("dd MMM");
                     iconFourImg.Source = $"w{allList[3].weather[0].icon}";
                     tempFourTxt.Text = allList[3].main.temp.ToString("0");
-                    
+
                     dayFiveTxt.Text = DateTime.Parse(allList[4].dt_txt).ToString("dddd");
                     dateFiveTxt.Text = DateTime.Parse(allList[4].dt_txt).ToString("dd MMM");
                     iconFiveImg.Source = $"w{allList[4].weather[0].icon}";
@@ -202,8 +218,6 @@ namespace WeatherApp.Views
             {
                 await DisplayAlert("Weather Info", "No forecast information found", "OK");
             }
-
         }
-
     }
-    }
+}
