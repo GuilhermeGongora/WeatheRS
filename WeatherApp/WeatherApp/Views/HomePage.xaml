@@ -129,21 +129,7 @@
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-                                <maps:Map
-        x:Name="myMap"
-        Grid.Row="0"
-        Grid.Column="0"
-        VerticalOptions="FillAndExpand"
-        HorizontalOptions="FillAndExpand" />
-                            </Grid>
+                           
 
                         </StackLayout>
                 </StackLayout>
