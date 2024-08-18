@@ -16,7 +16,7 @@ using System.Globalization;
 namespace WeatherApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : ContentPage
+    public partial class HomePage : FlyoutPage
     {
         private HttpClient _httpClient;
 
@@ -32,6 +32,10 @@ namespace WeatherApp.Views
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
+        private void OnMenuButtonClicked(Object sender, EventArgs args)
+        {
+           
+        }
         private async void GetCoordinates()
         {
             try
