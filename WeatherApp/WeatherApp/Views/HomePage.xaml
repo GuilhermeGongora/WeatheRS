@@ -1,29 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.Views.HomePage">
-    <FlyoutPage.Flyout>
-        <ContentPage Title="Menu">
-            <StackLayout>
-                <Label Text="Opção 1"/>
-                <Label Text="Opção 2"/>
-                <Label Text="Opção 3"/>
-            </StackLayout>
-        </ContentPage>
-        
-    </FlyoutPage.Flyout>
-    <FlyoutPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
-                <ContentPage Title="Home">
-                    <StackLayout>
-                        <Label Text="Bem-vindo ao FlyoutPage!"/>
-                    </StackLayout>
-                </ContentPage>
-            </x:Arguments>
-        </NavigationPage>
-    </FlyoutPage.Detail>
-    <ContentPage Title="Home">
+             x:Class="WeatherApp.Views.HomePage"
+             Title="Home">
+
         <ScrollView>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
                 <Grid.RowDefinitions>
@@ -162,4 +142,3 @@
             </Grid>
         </ScrollView>
     </ContentPage>
-</FlyoutPage>

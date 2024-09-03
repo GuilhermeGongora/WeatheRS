@@ -1,12 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.Views.WeatherFlyBar">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:local="clr-namespace:WeatherApp.Views"
+             Title="FlyoutMenu"
+             x:Class="WeatherApp.Views.WeatherFlyBar"
+             BackgroundColor="Cyan">
+<StackLayout Padding="30">
+    <ListView x:Name="listview" x:FieldModifier="public">
+        <ListView.ItemsSource>
+            <x:Array Type="{x:Type local:FlyoutItemPage}">
+                <local:FlyoutItemPage Title="Home" IconSource="home.png" targetPage="{x:Type local:HomePage}"/>
+            </x:Array>
+        </ListView.ItemsSource>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="33" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding IconSource}" />
+                        <Label Grid.Column="1" Text="{Binding Title}"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</StackLayout>
+
 </ContentPage>
+

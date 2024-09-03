@@ -16,18 +16,20 @@ using System.Globalization;
 namespace WeatherApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : FlyoutPage
+    public partial class HomePage : ContentPage
     {
         private HttpClient _httpClient;
 
         public HomePage()
         {
+           
+
             InitializeComponent();
             GetCoordinates();
             // Ajusta o tamanho do mapa
         }
-
        
+
         private string Location { get; set; } = "Ireland";
         public double Latitude { get; set; }
         public double Longitude { get; set; }
