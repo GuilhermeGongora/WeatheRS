@@ -12,6 +12,7 @@ namespace WeatherApp
             InitializeComponent();
 
             MainPage = new WeatherApp.Views.FlyoutAppMenuWeather(); // Defina a página inicial aqui
+
         }
 
         protected override void OnStart()
