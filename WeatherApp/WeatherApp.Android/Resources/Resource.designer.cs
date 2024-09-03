@@ -24201,9 +24201,6 @@ namespace WeatherApp.Droid
 			// aapt resource value: 0x7F0B0094
 			public const int Toolbar = 2131427476;
 			
-			// aapt resource value: 0x7F0B0095
-			public const int toolbar_layout = 2131427477;
-			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
