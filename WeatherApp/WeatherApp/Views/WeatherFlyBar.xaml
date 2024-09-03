@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:WeatherApp.Views"
              Title="FlyoutMenu"
              x:Class="WeatherApp.Views.WeatherFlyBar"
-             BackgroundColor="Cyan">
+             BackgroundColor="Transparent"
+             >
 <StackLayout Padding="30">
     <ListView x:Name="listview" x:FieldModifier="public">
         <ListView.ItemsSource>

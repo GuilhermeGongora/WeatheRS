@@ -28,16 +28,22 @@ namespace WeatherApp.Views
             GetCoordinates();
             // Ajusta o tamanho do mapa
         }
-       
+        private void OnMenuButtonClicked(object sender, EventArgs e)
+        {
+            // Verifique se o pai da página é um FlyoutPage
+            if (this.Parent is FlyoutPage flyoutPage)
+            {
+                flyoutPage.IsPresented = true; // Abre o menu Flyout
+            }
+        }
+    
 
         private string Location { get; set; } = "Ireland";
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
-        private void OnMenuButtonClicked(Object sender, EventArgs args)
-        {
-           
-        }
+      
+        
         private async void GetCoordinates()
         {
             try
