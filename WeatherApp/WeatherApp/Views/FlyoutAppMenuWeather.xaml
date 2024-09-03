@@ -2,8 +2,10 @@
 <FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WeatherApp.Views"
-             x:Class="WeatherApp.Views.FlyoutAppMenuWeather">
+             x:Class="WeatherApp.Views.FlyoutAppMenuWeather"
+            >
     <FlyoutPage.Flyout>
+        
         <local:WeatherFlyBar x:Name="flyout"/>
     </FlyoutPage.Flyout>
 

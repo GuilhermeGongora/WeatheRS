@@ -4,13 +4,13 @@
              xmlns:local="clr-namespace:WeatherApp.Views"
              Title="FlyoutMenu"
              x:Class="WeatherApp.Views.WeatherFlyBar"
-             BackgroundColor="Transparent"
+             BackgroundColor="DarkBlue"
              >
 <StackLayout Padding="30">
     <ListView x:Name="listview" x:FieldModifier="public">
         <ListView.ItemsSource>
             <x:Array Type="{x:Type local:FlyoutItemPage}">
-                <local:FlyoutItemPage Title="Home" IconSource="home.png" targetPage="{x:Type local:HomePage}"/>
+                <local:FlyoutItemPage Title="Home" IconSource="menu.png" targetPage="{x:Type local:HomePage}"/>
             </x:Array>
         </ListView.ItemsSource>
         <ListView.ItemTemplate>
