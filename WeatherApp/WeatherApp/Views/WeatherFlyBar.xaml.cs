@@ -16,5 +16,10 @@ namespace WeatherApp.Views
         {
             InitializeComponent();
         }
+
+        private async void OnIconClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LocationSearchPage());
+        }
     }
 }
