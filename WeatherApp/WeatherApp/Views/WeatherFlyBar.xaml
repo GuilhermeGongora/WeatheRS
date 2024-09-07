@@ -7,15 +7,7 @@
              BackgroundColor="Transparent"
              >
 <StackLayout Padding="30">
-        <Grid BackgroundColor="LightGray" Padding="10">
-            <Label Text="Menu" FontSize="24" VerticalOptions="Center"/>
-            <!-- Adicionando um ícone de navegação no header -->
-            <ImageButton Source="menu.png"
-                         HorizontalOptions="End"
-                         VerticalOptions="Center"
-                         Clicked="OnIconClicked"/>
-        </Grid>
-        <ListView x:Name="listview" x:FieldModifier="public">
+    <ListView x:Name="listview" x:FieldModifier="public">
         <ListView.ItemsSource>
             <x:Array Type="{x:Type local:FlyoutItemPage}">
                 <local:FlyoutItemPage Title="Home" IconSource="menu.png" targetPage="{x:Type local:HomePage}"/>

@@ -1,10 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              x:Class="WeatherApp.Views.HomePage"
              >
     <ScrollView>
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+        <d:StackLayout Padding="10">
+            <!-- Barra de Pesquisa -->
+            <SearchBar Placeholder="Search"
+                   TextChanged="OnSearchBarTextChanged"
+                   SearchButtonPressed="OnSearchButtonPressed" />
+
+            <!-- Resultados da Pesquisa ou Conteúdo -->
+            <ListView x:Name="ResultsListView">
+                <!-- Defina o ItemTemplate ou DataTemplate conforme necessário -->
+            </ListView>
+
+            <!-- Outros elementos (se houver) -->
+            <!-- Corrija a linha incompleta do Grid -->
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <!-- Adicione suas colunas, linhas e conteúdo aqui -->
+            </Grid>
+        </d:StackLayout>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>

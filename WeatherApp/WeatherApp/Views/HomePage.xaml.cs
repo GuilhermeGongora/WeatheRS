@@ -12,6 +12,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Globalization;
+using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace WeatherApp.Views
 {
@@ -19,14 +21,50 @@ namespace WeatherApp.Views
     public partial class HomePage : ContentPage
     {
         private HttpClient _httpClient;
+        public ICommand SearchCommand { get; set; }
+        public ObservableCollection<string> SearchResults { get; set; }
 
-        public HomePage()
+        private void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
         {
-           
+            // Lógica de pesquisa em tempo real (opcional)
+            // Por exemplo, filtrar a lista com base na entrada
+        }
 
+        private void OnSearchButtonPressed(object sender, System.EventArgs e)
+        {
+            // Lógica para o botão de pesquisa pressionado
+            // Aqui você pode fazer uma busca real e atualizar a lista
+            string query = ((SearchBar)sender).Text;
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                // Exemplo: Atualizar SearchResults com base na consulta
+                SearchResults.Clear();
+                // Adicione itens à SearchResults com base na consulta
+                SearchResults.Add($"Resultado para: {query}");
+            }
+        }
+    public HomePage()
+        {
             InitializeComponent();
+
+            // Inicializar a lista de resultados
+            SearchResults = new ObservableCollection<string>();
+            ResultsListView.ItemsSource = SearchResults;
+
+            SearchCommand = new Command<string>(OnSearch);
+
+            BindingContext = this;
             GetCoordinates();
             // Ajusta o tamanho do mapa
+        }
+        private void OnSearch(string query)
+        {
+            // Lógica de pesquisa
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                DisplayAlert("Search", $"You searched for: {query}", "OK");
+            }
         }
         private void OnMenuButtonClicked(object sender, EventArgs e)
         {
