@@ -4,9 +4,10 @@
              x:Class="WeatherApp.Views.LocationSearchPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <SearchBar x:Name="searchBar"
+                   Placeholder="Digite o nome da cidade"
+                   SearchButtonPressed="OnSearchButtonPressed"/>
+        <!-- Outros elementos da sua página de pesquisa -->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -14,6 +14,7 @@ using Xamarin.Forms.Xaml;
 using System.Globalization;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using WeatherApp.ViewModels;
 
 namespace WeatherApp.Views
 {
@@ -30,7 +31,7 @@ namespace WeatherApp.Views
             InitializeComponent();
 
             // Inicializar a lista de resultados
-      
+
 
             BindingContext = this;
             GetCoordinates();

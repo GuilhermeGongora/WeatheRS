@@ -23,6 +23,9 @@ namespace WeatherApp.Models
         public int timezone { get; set; }
         public int sunrise { get; set; }
         public int sunset { get; set; }
+        public float temp { get; set; }
+        public string Temperature { get; set; } // Adicionando a propriedade Temperature
+
     }
 
     public class List
