@@ -24,35 +24,13 @@ namespace WeatherApp.Views
         public ICommand SearchCommand { get; set; }
         public ObservableCollection<string> SearchResults { get; set; }
 
-        private void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
-        {
-            // Lógica de pesquisa em tempo real (opcional)
-            // Por exemplo, filtrar a lista com base na entrada
-        }
-
-        private void OnSearchButtonPressed(object sender, System.EventArgs e)
-        {
-            // Lógica para o botão de pesquisa pressionado
-            // Aqui você pode fazer uma busca real e atualizar a lista
-            string query = ((SearchBar)sender).Text;
-
-            if (!string.IsNullOrWhiteSpace(query))
-            {
-                // Exemplo: Atualizar SearchResults com base na consulta
-                SearchResults.Clear();
-                // Adicione itens à SearchResults com base na consulta
-                SearchResults.Add($"Resultado para: {query}");
-            }
-        }
+       
     public HomePage()
         {
             InitializeComponent();
 
             // Inicializar a lista de resultados
-            SearchResults = new ObservableCollection<string>();
-            ResultsListView.ItemsSource = SearchResults;
-
-            SearchCommand = new Command<string>(OnSearch);
+      
 
             BindingContext = this;
             GetCoordinates();

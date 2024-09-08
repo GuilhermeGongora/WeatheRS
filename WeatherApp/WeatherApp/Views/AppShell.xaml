@@ -5,9 +5,7 @@
        x:Class="WeatherApp.Views.AppShell">
 
     <!-- Flyout Menu -->
-    <FlyoutItem Title="Home" Icon="menu.png">
-        <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
-    </FlyoutItem>
+  
 
 
 </Shell>

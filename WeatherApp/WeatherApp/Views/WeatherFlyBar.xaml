@@ -11,8 +11,11 @@
         <ListView.ItemsSource>
             <x:Array Type="{x:Type local:FlyoutItemPage}">
                 <local:FlyoutItemPage Title="Home" IconSource="menu.png" targetPage="{x:Type local:HomePage}"/>
-            </x:Array>
-        </ListView.ItemsSource>
+                    <local:FlyoutItemPage Title="Adicionar local" IconSource="menu.png" targetPage="{x:Type local:LocationSearchPage}"/>
+
+                </x:Array>
+              
+            </ListView.ItemsSource>
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
