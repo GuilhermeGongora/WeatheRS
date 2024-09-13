@@ -131,9 +131,34 @@
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
-
-
+                            <StackLayout>
+                                <Button Text="Abrir Menu Deslizante"
+                Clicked="OnOpenPopupButtonClicked" />
                             </StackLayout>
+                            <sliding:SlidingPanel x:Name="TemperaturaPanel"
+                              AbsoluteLayout.LayoutBounds="0,1,1,0.5"
+                              AbsoluteLayout.LayoutFlags="PositionProportional"
+                              IsOpen="False"
+                              OpenDirection="Bottom">
+                                <StackLayout BackgroundColor="LightSkyBlue" Padding="10">
+                                    <Label Text="Temperaturas da Semana"
+                       FontSize="20"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+                                    <StackLayout x:Name="TemperaturasLayout">
+                                        <!-- Adicione as temperaturas aqui -->
+                                        <Label Text="Segunda: 22°C"
+                           FontSize="16"
+                           Padding="5"/>
+                                        <Label Text="Terça: 24°C"
+                           FontSize="16"
+                           Padding="5"/>
+                                        <!-- Adicione as demais temperaturas aqui -->
+                                    </StackLayout>
+                                </StackLayout>
+                            </sliding:SlidingPanel>
+                        </StackLayout>
                         </StackLayout>
                     </Grid>
                     <Grid>

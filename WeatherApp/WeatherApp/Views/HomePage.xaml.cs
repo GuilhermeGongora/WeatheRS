@@ -15,6 +15,7 @@ using System.Globalization;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using WeatherApp.ViewModels;
+using Rg.Plugins.Popup.Services;
 
 namespace WeatherApp.Views
 {
@@ -25,8 +26,8 @@ namespace WeatherApp.Views
         public ICommand SearchCommand { get; set; }
         public ObservableCollection<string> SearchResults { get; set; }
 
-       
-    public HomePage()
+
+        public HomePage()
         {
             InitializeComponent();
 
@@ -37,6 +38,11 @@ namespace WeatherApp.Views
             GetCoordinates();
             // Ajusta o tamanho do mapa
         }
+        private async void OnOpenPopupButtonClicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new BottomPopupPage());
+        }
+
         private void OnSearch(string query)
         {
             // Lógica de pesquisa

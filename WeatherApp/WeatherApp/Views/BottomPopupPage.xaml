@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                                  xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+BackgroundColor="#80000000"
+                    HasSystemPadding="false"
+             x:Class="WeatherApp.Views.BottomPopupPage">
+    <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="20">
+        <!-- Adicione aqui o conteúdo do seu menu -->
+        <Label Text="Menu Item 1" />
+        <Label Text="Menu Item 2" />
+        <Label Text="Menu Item 3" />
+        <Button Text="Fechar" Clicked="OnCloseButtonClicked"/>
+    </StackLayout>
+
+</popup:PopupPage>
