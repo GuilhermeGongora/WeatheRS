@@ -17,6 +17,8 @@ namespace WeatherApp
 
         protected override void OnStart()
         {
+            Sharpnado.Tabs.Initializer.Initialize(true, false);
+            base.OnStart();
         }
 
         protected override void OnSleep()
