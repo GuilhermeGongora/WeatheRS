@@ -4,10 +4,10 @@
              x:Class="WeatherApp.Views.LocationSearchPage">
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar x:Name="searchBar"
-                   Placeholder="Digite o nome da cidade"
-                   SearchButtonPressed="OnSearchButtonPressed"/>
-        <!-- Outros elementos da sua página de pesquisa -->
+            <SearchBar x:Name="searchBar" Placeholder="Enter city"/>
+            <Button Text="Search" Clicked="OnSearchButtonPressed"/>
+            <Button Text="View Saved Cities" Clicked="OnViewSavedCitiesButtonPressed"/>
+            <!-- Outros controles aqui -->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

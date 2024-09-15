@@ -1,58 +1,80 @@
-﻿using Newtonsoft.Json;
+﻿// LocationSearchPage.xaml.cs
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+using WeatherApp.Helper;
 using WeatherApp.Models;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace WeatherApp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LocationSearchPage : ContentPage
-	{
-		public LocationSearchPage ()
-		{
-			InitializeComponent ();
-		}
+    public partial class LocationSearchPage : ContentPage
+    {
+        private List<SavedCity> savedCities = new List<SavedCity>();
+
+        public LocationSearchPage()
+        {
+            InitializeComponent();
+        }
+
         private async void OnSearchButtonPressed(object sender, EventArgs e)
         {
-            string cityName = searchBar.Text;
-            if (!string.IsNullOrEmpty(cityName))
+            var url = $"https://api.openweathermap.org/data/2.5/weather?q={searchBar.Text}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
+
+            var result = await ApiCaller.Get(url);
+            if (result.Successful)
             {
-                var weatherData = await GetWeatherDataAsync(cityName);
-                if (weatherData != null)
+                try
                 {
-                    // Adiciona a nova cidade à página inicial
-                    MessagingCenter.Send(this, "AddCity", weatherData);
+                    // Log da resposta JSON para depuração
+                    Console.WriteLine($"Weather API Response: {result.Response}");
+
+                    var weatherInfo = JsonConvert.DeserializeObject<WeatherInfo>(result.Response);
+
+                    if (weatherInfo != null)
+                    {
+                        // Adicionar cidade à lista
+                        var savedCity = new SavedCity
+                        {
+                            Name = CorrectLocationName(weatherInfo.name),
+                            Temperature = weatherInfo.main.temp,
+                            Humidity = weatherInfo.main.humidity,
+                            Pressure = weatherInfo.main.pressure,
+                            WindSpeed = weatherInfo.wind.speed,
+                            Cloudiness = weatherInfo.clouds.all,
+                            Icon = $"w{weatherInfo.weather[0].icon}",
+                            Date = DateTimeOffset.FromUnixTimeSeconds(weatherInfo.dt).UtcDateTime
+                                .AddSeconds(weatherInfo.timezone)
+                        };
+
+                        savedCities.Add(savedCity);
+
+                        // Navegar para a página de detalhes
+                        await Navigation.PushAsync(new WeatherDetailPage(savedCity));
+                    }
                 }
+                catch (Exception ex)
+                {
+                    // Tratar exceção
+                    Console.WriteLine($"Error processing weather data: {ex.Message}");
+                    await DisplayAlert("Weather Info", "Error processing weather data", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Weather Info", "No weather information found", "OK");
             }
         }
 
-        private async Task<WeatherInfo> GetWeatherDataAsync(string cityName)
+        private async void OnViewSavedCitiesButtonPressed(object sender, EventArgs e)
         {
-            string apiKey = "YOUR_API_KEY";
-            string url = $"http://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={apiKey}&units=metric";
-
-            using (HttpClient client = new HttpClient())
-            {
-                HttpResponseMessage response = await client.GetAsync(url);
-                if (response.IsSuccessStatusCode)
-                {
-                    string content = await response.Content.ReadAsStringAsync();
-                    var weatherData = JsonConvert.DeserializeObject<WeatherInfo>(content);
-                    return weatherData;
-                }
-                else
-                {
-                    // Tratar erro de requisição
-                    return null;
-                }
-            }
+            await Navigation.PushAsync(new SavedCitiesPage(savedCities));
         }
 
+        private string CorrectLocationName(string locationName)
+        {
+            // Sua implementação para corrigir o nome da localização
+            return locationName;
+        }
     }
 }
