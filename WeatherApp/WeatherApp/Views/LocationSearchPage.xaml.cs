@@ -1,17 +1,13 @@
-﻿// LocationSearchPage.xaml.cs
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using WeatherApp.Helper;
-using WeatherApp.Models;
 using Xamarin.Forms;
+using WeatherApp.Models;
+using WeatherApp.Helper;
 
 namespace WeatherApp.Views
 {
     public partial class LocationSearchPage : ContentPage
     {
-        private List<SavedCity> savedCities = new List<SavedCity>();
-
         public LocationSearchPage()
         {
             InitializeComponent();
@@ -19,43 +15,39 @@ namespace WeatherApp.Views
 
         private async void OnSearchButtonPressed(object sender, EventArgs e)
         {
-            var url = $"https://api.openweathermap.org/data/2.5/weather?q={searchBar.Text}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
-
+            var url = $"https://api.openweathermap.org/data/2.5/weather?q={searchBar.Text.Trim()}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
+            
             var result = await ApiCaller.Get(url);
             if (result.Successful)
             {
                 try
                 {
-                    // Log da resposta JSON para depuração
-                    Console.WriteLine($"Weather API Response: {result.Response}");
-
                     var weatherInfo = JsonConvert.DeserializeObject<WeatherInfo>(result.Response);
 
                     if (weatherInfo != null)
                     {
-                        // Adicionar cidade à lista
+                        // Cria uma nova cidade com base nos dados da API
                         var savedCity = new SavedCity
                         {
-                            Name = CorrectLocationName(weatherInfo.name),
+                            Name = weatherInfo.name,
                             Temperature = weatherInfo.main.temp,
                             Humidity = weatherInfo.main.humidity,
                             Pressure = weatherInfo.main.pressure,
                             WindSpeed = weatherInfo.wind.speed,
                             Cloudiness = weatherInfo.clouds.all,
                             Icon = $"w{weatherInfo.weather[0].icon}",
-                            Date = DateTimeOffset.FromUnixTimeSeconds(weatherInfo.dt).UtcDateTime
-                                .AddSeconds(weatherInfo.timezone)
+                            Date = DateTime.UtcNow
                         };
 
-                        savedCities.Add(savedCity);
+                        // Salva a cidade no banco de dados
+                        await App.Database.AddCityAsync(savedCity);
 
-                        // Navegar para a página de detalhes
+                        // Navega para a página de detalhes da cidade ou faz outra ação
                         await Navigation.PushAsync(new WeatherDetailPage(savedCity));
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Tratar exceção
                     Console.WriteLine($"Error processing weather data: {ex.Message}");
                     await DisplayAlert("Weather Info", "Error processing weather data", "OK");
                 }
@@ -68,13 +60,8 @@ namespace WeatherApp.Views
 
         private async void OnViewSavedCitiesButtonPressed(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SavedCitiesPage(savedCities));
-        }
-
-        private string CorrectLocationName(string locationName)
-        {
-            // Sua implementação para corrigir o nome da localização
-            return locationName;
+            // Navega para a página que lista as cidades salvas
+            await Navigation.PushAsync(new SavedCitiesPage());
         }
     }
 }

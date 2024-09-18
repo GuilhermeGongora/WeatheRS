@@ -1,16 +1,24 @@
-﻿// SavedCitiesPage.xaml.cs
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using System.Collections.Generic;
+using WeatherApp.Models;
 
 namespace WeatherApp.Views
 {
     public partial class SavedCitiesPage : ContentPage
     {
-        public SavedCitiesPage(List<SavedCity> cities)
+        public SavedCitiesPage()
         {
             InitializeComponent();
+        }
 
-            // Definir a lista de cidades
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Recupera as cidades salvas do banco de dados
+            var cities = await App.Database.GetCitiesAsync();
+
+            // Define a lista de cidades no ListView
             citiesListView.ItemsSource = cities;
         }
 
@@ -18,9 +26,9 @@ namespace WeatherApp.Views
         {
             if (e.SelectedItem is SavedCity selectedCity)
             {
-                // Navegar para a página de detalhes da cidade selecionada
+                // Navega para a página de detalhes da cidade selecionada
                 await Navigation.PushAsync(new WeatherDetailPage(selectedCity));
-                ((ListView)sender).SelectedItem = null; // Desmarcar a seleção
+                ((ListView)sender).SelectedItem = null; // Desmarca a seleção
             }
         }
     }

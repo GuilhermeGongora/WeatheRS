@@ -4,23 +4,21 @@
              x:Class="WeatherApp.Views.SavedCitiesPage">
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <StackLayout Padding="10">
-                <ListView x:Name="citiesListView" ItemSelected="OnCitySelected">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" Padding="5">
-                                    <Image Source="{Binding Icon}" WidthRequest="50" HeightRequest="50"/>
-                                    <StackLayout VerticalOptions="Center" Padding="10,0">
-                                        <Label Text="{Binding Name}" FontSize="20" TextColor="Black"/>
-                                        <Label Text="{Binding Temperature, StringFormat='{0}°C'}" FontSize="16" TextColor="Gray"/>
-                                    </StackLayout>
+            <ListView x:Name="citiesListView" ItemSelected="OnCitySelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Image Source="{Binding Icon}" WidthRequest="50" HeightRequest="50"/>
+                                <StackLayout VerticalOptions="Center" Padding="10,0">
+                                    <Label Text="{Binding Name}" FontSize="20" TextColor="Black"/>
+                                    <Label Text="{Binding Temperature, StringFormat='{0}°C'}" FontSize="16" TextColor="Gray"/>
                                 </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
