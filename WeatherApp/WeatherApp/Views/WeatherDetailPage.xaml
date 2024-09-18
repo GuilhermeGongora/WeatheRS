@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.WeatherDetailPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label x:Name="cityTxt" FontSize="24" TextColor="Black"/>
+            <Label x:Name="temperatureTxt" FontSize="20" TextColor="Black"/>
+            <Label x:Name="humidityTxt" FontSize="20" TextColor="Black"/>
+            <Label x:Name="pressureTxt" FontSize="20" TextColor="Black"/>
+            <Label x:Name="windTxt" FontSize="20" TextColor="Black"/>
+            <Label x:Name="cloudinessTxt" FontSize="20" TextColor="Black"/>
+            <Label x:Name="dateTxt" FontSize="20" TextColor="Black"/>
+            <Image x:Name="iconImg" WidthRequest="100" HeightRequest="100"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
