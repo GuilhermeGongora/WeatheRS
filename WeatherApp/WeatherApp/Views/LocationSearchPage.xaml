@@ -1,10 +1,12 @@
-﻿﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Views.LocationSearchPage">
     <ContentPage.Content>
         <StackLayout>
-         
+            <SearchBar x:Name="searchBar"
+                   Placeholder="Digite o nome da cidade"
+                   SearchButtonPressed="OnSearchButtonPressed"/>
         <!-- Outros elementos da sua página de pesquisa -->
         </StackLayout>
     </ContentPage.Content>
