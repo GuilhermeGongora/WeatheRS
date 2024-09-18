@@ -12,7 +12,7 @@ namespace WeatherApp.Views
 
             // Exibir informações na UI
             cityTxt.Text = savedCity.Name.ToUpperInvariant();
-            temperatureTxt.Text = $"{savedCity.Temperature.ToString("F0")}C";
+            temperatureTxt.Text = $"{savedCity.Temperature.ToString("F0")}";
             humidityTxt.Text = $"{savedCity.Humidity}%";
             pressureTxt.Text = $"{savedCity.Pressure} hPa";
             windTxt.Text = $"{savedCity.WindSpeed.ToString("F0")} m/s";
