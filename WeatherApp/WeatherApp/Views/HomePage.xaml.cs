@@ -14,7 +14,6 @@ using Xamarin.Forms.Xaml;
 using System.Globalization;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
-using WeatherApp.ViewModels;
 using Rg.Plugins.Popup.Services;
 
 namespace WeatherApp.Views
@@ -176,4 +175,3 @@ namespace WeatherApp.Views
     }
 }
 
-      

@@ -11,13 +11,13 @@ using Xamarin.Forms.Xaml;
 
 namespace WeatherApp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LocationSearchPage : ContentPage
-	{
-		public LocationSearchPage ()
-		{
-			InitializeComponent ();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class LocationSearchPage : ContentPage
+    {
+        public LocationSearchPage()
+        {
+            InitializeComponent();
+        }
         private async void OnSearchButtonPressed(object sender, EventArgs e)
         {
             string cityName = searchBar.Text;
