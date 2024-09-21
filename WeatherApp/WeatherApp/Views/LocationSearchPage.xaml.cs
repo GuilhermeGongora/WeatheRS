@@ -40,7 +40,7 @@ namespace WeatherApp.Views
                         };
 
                         // Salva a cidade no banco de dados
-                        await App.Database.AddCityAsync(savedCity);
+                        await App.Database.SaveCityAsync(savedCity);
 
                         // Navega para a página de detalhes da cidade ou faz outra ação
                         await Navigation.PushAsync(new WeatherDetailPage(savedCity));

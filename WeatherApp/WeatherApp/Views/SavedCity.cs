@@ -7,6 +7,7 @@ namespace WeatherApp.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        public string Description { get; set; } 
         public string Name { get; set; }
         public double Temperature { get; set; }
         public int Humidity { get; set; }

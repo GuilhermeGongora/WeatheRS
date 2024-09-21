@@ -7,7 +7,7 @@ using WeatherApp.Models;
 public class WeatherService : IWeatherService
 {
     private readonly HttpClient _httpClient;
-    private const string ApiKey = "SUA_CHAVE_DE_API";
+    private const string ApiKey = "0254e13028fbf335e64c91ff361ce46f&units=metric";
 
     public WeatherService()
     {

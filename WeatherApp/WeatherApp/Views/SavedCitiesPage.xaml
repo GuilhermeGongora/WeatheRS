@@ -4,10 +4,18 @@
              x:Class="WeatherApp.Views.SavedCitiesPage">
     <ContentPage.Content>
         <StackLayout Padding="10">
+            <Button Text="Reload Data" Clicked="OnReloadButtonClicked" />
+
             <ListView x:Name="citiesListView" ItemSelected="OnCitySelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete"
+                                          Clicked="OnDeleteClicked"
+                                          CommandParameter="{Binding .}"
+                                          IsDestructive="True" />
+                            </ViewCell.ContextActions>
                             <StackLayout Orientation="Horizontal" Padding="5">
                                 <Image Source="{Binding Icon}" WidthRequest="50" HeightRequest="50"/>
                                 <StackLayout VerticalOptions="Center" Padding="10,0">

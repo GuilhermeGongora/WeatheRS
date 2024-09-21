@@ -15,10 +15,19 @@ namespace WeatherApp.Helper
             _database.CreateTableAsync<SavedCity>().Wait(); // Cria a tabela de cidades, caso ainda não exista
         }
 
-        // Adiciona uma nova cidade
-        public Task<int> AddCityAsync(SavedCity city)
+        // Adiciona uma nova cidade ou atualiza se já existir
+        public Task<int> SaveCityAsync(SavedCity city)
         {
-            return _database.InsertAsync(city);
+            if (city.Id != 0)
+            {
+                // Atualiza a cidade existente
+                return _database.UpdateAsync(city);
+            }
+            else
+            {
+                // Insere uma nova cidade
+                return _database.InsertAsync(city);
+            }
         }
 
         // Retorna todas as cidades salvas
