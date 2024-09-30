@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.NewsPage"
+             Title="Notícias Ambientais"
+             BackgroundColor="DimGray">
+    <!-- Fundo suave -->
+
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+
+            <!-- Cabeçalho -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+                <Image Source="header_icon.png" HeightRequest="40" Aspect="AspectFit"/>
+                <!-- Insira um ícone apropriado -->
+                <Label Text="Notícias | Ambiente" FontSize="Large" FontAttributes="Bold" FontFamily="Poppins" VerticalOptions="Center" Margin="10,0"/>
+            </StackLayout>
+
+            <!-- Coleção de notícias -->
+            <CollectionView x:Name="NewsCollectionView" SelectionMode="Single" SelectionChanged="OnSelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="0,5" CornerRadius="15" BorderColor="#FF5722" BackgroundColor="White" HasShadow="True">
+                            <StackLayout>
+                                <Image Source="{Binding UrlToImage}" Aspect="AspectFill" HeightRequest="150"/>
+                                <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="Medium" TextColor="Black" LineBreakMode="TailTruncation"/>
+                                <Label Text="{Binding PublishedAt}" FontSize="Small" TextColor="Gray"/>
+                                <Label Text="{Binding Description}" FontSize="Small" TextColor="Black" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

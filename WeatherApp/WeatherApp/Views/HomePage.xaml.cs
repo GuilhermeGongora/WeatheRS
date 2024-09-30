@@ -32,12 +32,64 @@ namespace WeatherApp.Views
             InitializeComponent();
 
             // Inicializar a lista de resultados
-
+            LoadData();
 
             BindingContext = this;
             GetCoordinates();
             // Ajusta o tamanho do mapa
         }
+        private async void LoadData()
+        {
+            // Obtenha a cidade atual por geolocalização (implemente seu método aqui)
+            var currentCity = await GetCurrentCity();
+
+            // Obtenha as cidades salvas do banco de dados
+            var savedCities = await App.Database.GetCitiesAsync();
+
+            // Crie uma lista que inclui a cidade atual
+            var allCities = new List<SavedCity> { currentCity };
+            allCities.AddRange(savedCities);
+
+            // Defina a lista de cidades no CarouselView
+        }
+
+        private async Task<SavedCity> GetCurrentCity()
+        {
+            // Obtém a localização atual
+            var request = new GeolocationRequest(GeolocationAccuracy.Default);
+            var location = await Geolocation.GetLocationAsync(request);
+
+            if (location != null)
+            {
+                // Usa a localização para obter o nome da cidade
+                var cityName = await GetCity(location);
+
+                // Obtém as informações meteorológicas da cidade
+                var url = $"https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
+                var result = await ApiCaller.Get(url);
+
+                if (result.Successful)
+                {
+                    var weatherInfo = JsonConvert.DeserializeObject<WeatherInfo>(result.Response);
+                    if (weatherInfo != null)
+                    {
+                        return new SavedCity
+                        {
+                            Name = weatherInfo.name,
+                            Temperature = weatherInfo.main.temp,
+                            Humidity = weatherInfo.main.humidity,
+                            Pressure = weatherInfo.main.pressure,
+                            WindSpeed = weatherInfo.wind.speed,
+                            Cloudiness = weatherInfo.clouds.all,
+                            Date = DateTime.UtcNow // ou qualquer data que você quiser
+                        };
+                    }
+                }
+            }
+
+            return null; // Retorna null se não conseguir obter a cidade atual
+        }
+
 
         private async void OnOpenPopupButtonClicked(object sender, EventArgs e)
         {

@@ -16,18 +16,33 @@ namespace WeatherApp.Helper
         }
 
         // Adiciona uma nova cidade ou atualiza se já existir
-        public Task<int> SaveCityAsync(SavedCity city)
+        public async Task<int> SaveCityAsync(SavedCity city)
         {
-            if (city.Id != 0)
+            var existingCity = await GetCityByNameAsync(city.Name);
+            if (existingCity != null)
             {
-                // Atualiza a cidade existente
-                return _database.UpdateAsync(city);
+                // A cidade já existe, atualiza suas informações
+                existingCity.Temperature = city.Temperature;
+                existingCity.Humidity = city.Humidity;
+                existingCity.Pressure = city.Pressure;
+                existingCity.WindSpeed = city.WindSpeed;
+                existingCity.Cloudiness = city.Cloudiness;
+                existingCity.Icon = city.Icon;
+                existingCity.Date = city.Date;
+
+                return await _database.UpdateAsync(existingCity);
             }
             else
             {
                 // Insere uma nova cidade
-                return _database.InsertAsync(city);
+                return await _database.InsertAsync(city);
             }
+        }
+
+        public Task<SavedCity> GetCityByNameAsync(string cityName)
+        {
+            return _database.Table<SavedCity>()
+                            .FirstOrDefaultAsync(c => c.Name.ToLower() == cityName.ToLower());
         }
 
         // Retorna todas as cidades salvas

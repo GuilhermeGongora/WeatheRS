@@ -12,8 +12,7 @@
             <x:Array Type="{x:Type local:FlyoutItemPage}">
                 <local:FlyoutItemPage Title="Home" IconSource="menu.png" targetPage="{x:Type local:HomePage}"/>
                     <local:FlyoutItemPage Title="Adicionar local" IconSource="menu.png" targetPage="{x:Type local:LocationSearchPage}"/>
-                    <local:FlyoutItemPage Title="Meus locais" IconSource="menu.png" targetPage="{x:Type local:SavedCitiesPage}"/>
-
+                    <local:FlyoutItemPage Title="Adicionar local" IconSource="menu.png" targetPage="{x:Type local:NewsPage}"/>
                 </x:Array>
               
             </ListView.ItemsSource>
