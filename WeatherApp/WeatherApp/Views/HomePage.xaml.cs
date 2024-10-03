@@ -181,8 +181,6 @@ namespace WeatherApp.Views
                         iconImg.Source = $"w{weatherInfo.weather[0].icon}";
 
                         // Verificar se a umidade e a temperatura são corretas
-                        Console.WriteLine($"Humidity: {weatherInfo.main.humidity}%");
-                        Console.WriteLine($"Temperature: {weatherInfo.main.temp}°C");
 
                         cityTxt.Text = CorrectLocationName(weatherInfo.name).ToUpperInvariant();
                         temperatureTxt.Text = weatherInfo.main.temp.ToString("0");

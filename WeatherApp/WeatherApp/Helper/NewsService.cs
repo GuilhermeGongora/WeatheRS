@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
 using System.Collections.Generic;
+using System.Linq; // Adicione isso para usar LINQ
 using System.Threading.Tasks;
 using WeatherApp.Helper;
 
 public class NewsService
 {
-    private const string ApiKey = "28157a775eee43ef8bb6739605164b24";
+    private const string ApiKey = "28157a775eee43ef8bb6739605164b24"; // Adicione sua chave da API aqui
     private const string BaseUrl = "https://newsapi.org/v2/everything?q=queimadas OR \"mudanças climáticas\" OR sustentabilidade OR \"aquecimento global\" OR poluição OR \"energia renovável\"&sortBy=publishedAt&language=pt&apiKey=";
 
     public async Task<List<NewsArticle>> GetNewsAsync()
@@ -20,7 +21,11 @@ public class NewsService
         if (response.IsSuccessful)
         {
             var jsonResult = JsonConvert.DeserializeObject<NewsApiResponse>(response.Content);
-            return jsonResult.Articles;
+            var articles = jsonResult.Articles.Select(article => {
+                article.SourceName = article.Source?.Name; // Mapeia o nome da fonte
+                return (NewsArticle)article; // Converte para NewsArticle
+            }).ToList();
+            return articles;
         }
         return null;
     }
@@ -28,5 +33,12 @@ public class NewsService
 
 public class NewsApiResponse
 {
-    public List<NewsArticle> Articles { get; set; }
+    public string Status { get; set; }
+    public int TotalResults { get; set; }
+    public List<ArticleWrapper> Articles { get; set; }
+}
+
+public class ArticleWrapper : NewsArticle
+{
+    public Source Source { get; set; } // Adiciona a propriedade Source para mapear os dados da fonte
 }

@@ -17,8 +17,30 @@ namespace WeatherApp.Views
 
         private async void LoadNews()
         {
-            var newsArticles = await _newsService.GetNewsAsync();
-            NewsCollectionView.ItemsSource = newsArticles;
+            try
+            {
+                // Mostra um indicador de carregamento (opcional)
+                IsBusy = true;
+
+                var newsArticles = await _newsService.GetNewsAsync();
+
+                if (newsArticles != null)
+                {
+                    NewsCollectionView.ItemsSource = newsArticles;
+                }
+                else
+                {
+                    await DisplayAlert("Erro", "Não foi possível carregar as notícias.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", "Houve um problema ao carregar as notícias: " + ex.Message, "OK");
+            }
+            finally
+            {
+                IsBusy = false; // Oculta o indicador de carregamento
+            }
         }
 
         private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
