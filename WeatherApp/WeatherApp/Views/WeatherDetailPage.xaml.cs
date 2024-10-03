@@ -19,7 +19,13 @@ namespace WeatherApp.Views
             windTxt.Text = $"{savedCity.WindSpeed.ToString("F0")} m/s";
             cloudinessTxt.Text = $"{savedCity.Cloudiness}%";
             dateTxt.Text = savedCity.Date.ToString("dddd, MMM dd").ToUpper();
-            iconImg.Source = $"w{savedCity.Icon}";
+            // Verifica se os dois primeiros caracteres são iguais, e remove o primeiro se for "w"
+            string iconName = savedCity.Icon.StartsWith("ww") ? savedCity.Icon.Substring(1) : savedCity.Icon;
+
+            // Atualiza a fonte da imagem com o ícone correto
+            iconImg.Source = iconName;
+
+
         }
     }
 }
