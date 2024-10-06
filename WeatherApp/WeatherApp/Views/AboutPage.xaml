@@ -45,7 +45,25 @@
                     </StackLayout>
                 </StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="#A9A9A9" />
- <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                    <Frame CornerRadius="25" Padding="0" Margin="0,0,15,0">
+                        <ImageButton Source="juliaDev.png" 
+                              WidthRequest="80" 
+                              HeightRequest="80" 
+                              Aspect="AspectFill"  Clicked="OnImageButtonClicked" CommandParameter="https://www.instagram.com/julia.inostroza.a/"/>
+                    </Frame>
+                    <StackLayout>
+                        <Label Text="Júlia I. Arbucias"
+                              FontSize="20" 
+                              TextColor="White" 
+                              FontAttributes="Bold"/>
+                        <Label Text="Descrição do desenvolvedor 1. Informações sobre suas habilidades e contribuições."
+                              FontSize="14" 
+                              TextColor="LightGray"/>
+                    </StackLayout>
+                </StackLayout>
+                <BoxView HeightRequest="1" BackgroundColor="#A9A9A9" />
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                     <Frame CornerRadius="25" Padding="0" Margin="0,0,15,0">
                         <ImageButton Source="digoDev.png" 
                                WidthRequest="80" 
@@ -78,24 +96,6 @@
                                TextColor="White" 
                                FontAttributes="Bold"/>
                         <Label Text="Descrição do desenvolvedor 2. Informações sobre suas habilidades e contribuições."
-                               FontSize="14" 
-                               TextColor="LightGray"/>
-                    </StackLayout>
-                </StackLayout>
-                <BoxView HeightRequest="1" BackgroundColor="#A9A9A9" />
- <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                    <Frame CornerRadius="25" Padding="0" Margin="0,0,15,0">
-                        <ImageButton Source="guiDev.png" 
-                               WidthRequest="80" 
-                               HeightRequest="80" 
-                               Aspect="AspectFill"  Clicked="OnImageButtonClicked" CommandParameter="https://www.instagram.com/julia.inostroza.a/"/>
-                    </Frame>
-                    <StackLayout>
-                        <Label Text="Júlia I. Arbucias"
-                               FontSize="20" 
-                               TextColor="White" 
-                               FontAttributes="Bold"/>
-                        <Label Text="Descrição do desenvolvedor 1. Informações sobre suas habilidades e contribuições."
                                FontSize="14" 
                                TextColor="LightGray"/>
                     </StackLayout>
