@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using WeatherApp.Helper;
 using WeatherApp.Models;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WeatherApp.Views
@@ -22,10 +23,8 @@ namespace WeatherApp.Views
         {
             InitializeComponent();
             // Configurar a animação personalizada
-            GetForecast();
             GetCoordinates();
 
-            this.Animation = new SlideUpAnimation();
         }
         private async Task<string> GetCity(Location location)
         {
@@ -52,12 +51,14 @@ namespace WeatherApp.Views
                     Longitude = location.Longitude;
                     Location = await GetCity(location);
 
+                    // Após obter as coordenadas, chame o método para obter a previsão
+                    GetForecast();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                throw;
+                await DisplayAlert("Erro", "Não foi possível obter a localização.", "OK");
             }
         }
 
@@ -69,8 +70,18 @@ namespace WeatherApp.Views
 
         private async void GetForecast()
         {
-            var url = $"https://api.openweathermap.org/data/2.5/forecast?q={Location}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
+            // Verifique se já temos as coordenadas antes de fazer a requisição da previsão
+            if (Latitude == 0 || Longitude == 0)
+            {
+                await DisplayAlert("Erro", "Não foi possível obter a localização.", "OK");
+                return;
+            }
+
+            // URL da API utilizando latitude e longitude
+            var url = $"https://api.openweathermap.org/data/2.5/forecast?lat={Latitude}&lon={Longitude}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
+
             var result = await ApiCaller.Get(url);
+
             if (result.Successful)
             {
                 try
@@ -86,33 +97,39 @@ namespace WeatherApp.Views
                         if (date > DateTime.Now && date.Hour == 0 && date.Minute == 0 && date.Second == 0)
                             allList.Add(list);
                     }
-
                     var cultureInfo = new CultureInfo("pt-BR");
 
-                    dayOneTxt.Text = DateTime.Parse(allList[0].dt_txt).ToString("dddd", cultureInfo);
+                    // Função para abreviar os dias da semana
+                    string AbreviarDiaDaSemana(string diaCompleto)
+                    {
+                        return char.ToUpper(diaCompleto[0]) + diaCompleto.Substring(1, 2);
+                    }
+
+                    // Atualizando os labels com os dias abreviados
+                    dayOneTxt.Text = AbreviarDiaDaSemana(DateTime.Parse(allList[0].dt_txt).ToString("dddd", cultureInfo));
                     dateOneTxt.Text = DateTime.Parse(allList[0].dt_txt).ToString("dd MMM", cultureInfo);
                     iconOneImg.Source = $"w{allList[0].weather[0].icon}";
-                    tempOneTxt.Text = allList[0].main.temp.ToString("0");
+                    tempOneTxt.Text = allList[0].main.temp.ToString("0") + "°C";
 
-                    dayTwoTxt.Text = DateTime.Parse(allList[1].dt_txt).ToString("dddd", cultureInfo);
+                    dayTwoTxt.Text = AbreviarDiaDaSemana(DateTime.Parse(allList[1].dt_txt).ToString("dddd", cultureInfo));
                     dateTwoTxt.Text = DateTime.Parse(allList[1].dt_txt).ToString("dd MMM", cultureInfo);
                     iconTwoImg.Source = $"w{allList[1].weather[0].icon}";
-                    tempTwoTxt.Text = allList[1].main.temp.ToString("0");
+                    tempTwoTxt.Text = allList[1].main.temp.ToString("0") + "°C";
 
-                    dayThreeTxt.Text = DateTime.Parse(allList[2].dt_txt).ToString("dddd", cultureInfo);
+                    dayThreeTxt.Text = AbreviarDiaDaSemana(DateTime.Parse(allList[2].dt_txt).ToString("dddd", cultureInfo));
                     dateThreeTxt.Text = DateTime.Parse(allList[2].dt_txt).ToString("dd MMM", cultureInfo);
                     iconThreeImg.Source = $"w{allList[2].weather[0].icon}";
-                    tempThreeTxt.Text = allList[2].main.temp.ToString("0");
+                    tempThreeTxt.Text = allList[2].main.temp.ToString("0") + "°C";
 
-                    dayFourTxt.Text = DateTime.Parse(allList[3].dt_txt).ToString("dddd", cultureInfo);
+                    dayFourTxt.Text = AbreviarDiaDaSemana(DateTime.Parse(allList[3].dt_txt).ToString("dddd", cultureInfo));
                     dateFourTxt.Text = DateTime.Parse(allList[3].dt_txt).ToString("dd MMM", cultureInfo);
                     iconFourImg.Source = $"w{allList[3].weather[0].icon}";
-                    tempFourTxt.Text = allList[3].main.temp.ToString("0");
+                    tempFourTxt.Text = allList[3].main.temp.ToString("0") + "°C";
 
-                    dayFiveTxt.Text = DateTime.Parse(allList[4].dt_txt).ToString("dddd", cultureInfo);
+                    dayFiveTxt.Text = AbreviarDiaDaSemana(DateTime.Parse(allList[4].dt_txt).ToString("dddd", cultureInfo));
                     dateFiveTxt.Text = DateTime.Parse(allList[4].dt_txt).ToString("dd MMM", cultureInfo);
                     iconFiveImg.Source = $"w{allList[4].weather[0].icon}";
-                    tempFiveTxt.Text = allList[4].main.temp.ToString("0");
+                    tempFiveTxt.Text = allList[4].main.temp.ToString("0") + "°C";
                 }
                 catch (Exception ex)
                 {
@@ -123,6 +140,7 @@ namespace WeatherApp.Views
             {
                 await DisplayAlert("Weather Info", "No forecast information found", "OK");
             }
+
         }
 
     }

@@ -1,4 +1,6 @@
 ﻿// WeatherDetailPage.xaml.cs
+using Rg.Plugins.Popup.Services;
+using System;
 using WeatherApp.Models;
 using Xamarin.Forms;
 
@@ -27,5 +29,12 @@ namespace WeatherApp.Views
 
 
         }
+        private async void OnOpenPopupButtonClicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new BottomPopupPage());
+        }
+
+      
+
     }
 }

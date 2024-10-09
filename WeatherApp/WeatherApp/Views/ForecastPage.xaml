@@ -34,47 +34,47 @@
                 <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
 
                     <!-- Day 1 -->
-                    <Frame CornerRadius="20" BackgroundColor="#6C7A89" Padding="5" WidthRequest="200" HeightRequest="500" VerticalOptions="Center">
+                    <Frame CornerRadius="20" BackgroundColor="#03356e" Padding="5" WidthRequest="300" HeightRequest="600" VerticalOptions="Center">
                         <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label x:Name="dayOneTxt" Text="Dom" TextColor="White" FontSize="14" HorizontalOptions="Center"/>
-                            <Label x:Name="dateOneTxt" Margin="0,-3,0,5" Text="01 Dez" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
+                            <Label x:Name="dayOneTxt" Text="..." TextColor="White" FontSize="24" HorizontalOptions="Center"/>
+                            <Label x:Name="dateOneTxt" Margin="0,-3,0,5" Text="Loading..." TextColor="White" FontSize="11" HorizontalOptions="Center"/>
                             <Image x:Name="iconOneImg" Source="cloud.png" Margin="0,10" WidthRequest="40" HeightRequest="40"/>
-                            <Frame BackgroundColor="#FF6B6B" CornerRadius="10" Padding="5" WidthRequest="70" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Frame BackgroundColor="#016a8a" CornerRadius="10" Padding="5" WidthRequest="70" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">
                                 <Label x:Name="tempOneTxt" Text="22°" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
                             </Frame>
                         </StackLayout>
                     </Frame>
 
                     <!-- Day 2 -->
-                    <Frame CornerRadius="20" BackgroundColor="#6C7A89" Padding="5" WidthRequest="200" HeightRequest="500" VerticalOptions="Center">
+                    <Frame CornerRadius="20" BackgroundColor="#03356e" Padding="5" WidthRequest="300" HeightRequest="600" VerticalOptions="Center">
                         <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label x:Name="dayTwoTxt" Text="Seg" TextColor="White" FontSize="14" HorizontalOptions="Center"/>
-                            <Label x:Name="dateTwoTxt" Margin="0,-3,0,5" Text="02 Dez" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
+                            <Label x:Name="dayTwoTxt" Text="..." TextColor="White" FontSize="24" HorizontalOptions="Center"/>
+                            <Label x:Name="dateTwoTxt" Margin="0,-3,0,5" Text="Loading..." TextColor="White" FontSize="11" HorizontalOptions="Center"/>
                             <Image x:Name="iconTwoImg" Source="cloud.png" Margin="0,10" WidthRequest="40" HeightRequest="40"/>
-                            <Frame BackgroundColor="#FF6B6B" CornerRadius="10" Padding="5" WidthRequest="70" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Frame BackgroundColor="#016a8a" CornerRadius="10" Padding="5" WidthRequest="70" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">
                                 <Label x:Name="tempTwoTxt" Text="17°" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
                             </Frame>
                         </StackLayout>
                     </Frame>
 
                     <!-- Day 3 -->
-                    <Frame CornerRadius="20" BackgroundColor="#6C7A89" Padding="5" WidthRequest="200" HeightRequest="500" VerticalOptions="Center">
+                    <Frame CornerRadius="20" BackgroundColor="#03356e" Padding="5" WidthRequest="300" HeightRequest="600" VerticalOptions="Center">
                         <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label x:Name="dayThreeTxt" Text="Ter" TextColor="White" FontSize="14" HorizontalOptions="Center"/>
-                            <Label x:Name="dateThreeTxt" Margin="0,-3,0,5" Text="03 Dez" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
+                            <Label x:Name="dayThreeTxt" Text="..." TextColor="White" FontSize="24" HorizontalOptions="Center"/>
+                            <Label x:Name="dateThreeTxt" Margin="0,-3,0,5" Text="Loading..." TextColor="White" FontSize="11" HorizontalOptions="Center"/>
                             <Image x:Name="iconThreeImg" Source="cloud.png" Margin="0,10" WidthRequest="40" HeightRequest="40"/>
-                            <Frame BackgroundColor="#FF6B6B" CornerRadius="10" Padding="5" WidthRequest="70" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Frame BackgroundColor="#016a8a" CornerRadius="10" Padding="5" WidthRequest="70" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">
                                 <Label x:Name="tempThreeTxt" Text="28°" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
                             </Frame>
                         </StackLayout>
                     </Frame>
                     <!-- Day 4 -->
-                    <Frame CornerRadius="15" BackgroundColor="#6C7A89" Padding="5" WidthRequest="250" HeightRequest="500" VerticalOptions="Center">
+                    <Frame CornerRadius="20" BackgroundColor="#03356e" Padding="5" WidthRequest="300" HeightRequest="600" VerticalOptions="Center">
                         <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label x:Name="dayFourTxt" Text="Wednesday" TextColor="White" FontSize="14" HorizontalOptions="Center"/>
-                            <Label x:Name="dateFourTxt" Margin="0,-3,0,5" Text="04 Dec" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
+                            <Label x:Name="dayFourTxt" Text="..." TextColor="White" FontSize="24" HorizontalOptions="Center"/>
+                            <Label x:Name="dateFourTxt" Margin="0,-3,0,5" Text="Loading..." TextColor="White" FontSize="11" HorizontalOptions="Center"/>
                             <Image x:Name="iconFourImg" Source="cloud.png" Margin="0,10" WidthRequest="40" HeightRequest="40"/>
-                            <Frame BackgroundColor="#FF6B6B" CornerRadius="10" Padding="5" WidthRequest="70" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">                       
+                            <Frame BackgroundColor="#016a8a" CornerRadius="10" Padding="5" WidthRequest="70" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">                       
                                 <Label x:Name="tempFourTxt" Text="25°" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
 
                             </Frame>
@@ -82,12 +82,12 @@
                     </Frame>
 
                     <!-- Day 5 -->
-                    <Frame CornerRadius="15" BackgroundColor="#6C7A89" Padding="5" WidthRequest="250" HeightRequest="500" VerticalOptions="Center">
+                    <Frame CornerRadius="20" BackgroundColor="#03356e" Padding="5" WidthRequest="300" HeightRequest="600" VerticalOptions="Center">
                         <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Label x:Name="dayFiveTxt" Text="Thursday" TextColor="White" FontSize="14" HorizontalOptions="Center"/>
-                            <Label x:Name="dateFiveTxt" Margin="0,-3,0,5" Text="05 Dec" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
+                            <Label x:Name="dayFiveTxt" Text="..." TextColor="White" FontSize="24" HorizontalOptions="Center"/>
+                            <Label x:Name="dateFiveTxt" Margin="0,-3,0,5" Text="Loading..." TextColor="White" FontSize="11" HorizontalOptions="Center"/>
                             <Image x:Name="iconFiveImg" Source="cloud.png" Margin="0,10" WidthRequest="40" HeightRequest="40"/>
-                            <Frame BackgroundColor="#FF6B6B" CornerRadius="10" Padding="5" WidthRequest="70" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Frame BackgroundColor="#016a8a" CornerRadius="10" Padding="5" WidthRequest="70" HeightRequest="30" HorizontalOptions="Center"  HasShadow="True" VerticalOptions="Center">
 
                                 <Label x:Name="tempFiveTxt" Text="21°" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
                             </Frame>
