@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.Views.AboutPage"
-             BackgroundColor="#1E1E1E">
+             x:Class="WeatherApp.Views.RsDonationPage">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20" Spacing="20">
@@ -105,7 +104,7 @@
                 <!-- Desenvolvedor 2 -->
                 <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                     <Frame CornerRadius="25" Padding="0" Margin="0,0,15,0">
-                        <ImageButton Source="samDev.png" 
+                        <ImageButton Source="guiDev.png" 
                                WidthRequest="80" 
                                HeightRequest="80" 
                                Aspect="AspectFill"  Clicked="OnImageButtonClicked" CommandParameter="https://www.instagram.com/samia.camelo/"/>
@@ -121,7 +120,7 @@
                     </StackLayout>
                 </StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="#A9A9A9" />
-      <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                     <Frame CornerRadius="25" Padding="0" Margin="0,0,15,0">
                         <ImageButton Source="guiDev.png" 
                                WidthRequest="80" 

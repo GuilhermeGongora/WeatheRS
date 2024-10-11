@@ -11,9 +11,7 @@
             <!-- Cabeçalho -->
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
                 <Label Text="Notícias | Ambiente" FontSize="Large" FontAttributes="Bold" FontFamily="Poppins" TextColor="White" VerticalOptions="Center" Margin="10,0"/>
-                <Frame Padding="0" Margin="0,0,0,0" CornerRadius="15" HasShadow="False">
-                    <Image Source="guiDev.png" Aspect="AspectFill" WidthRequest="50" HeightRequest="50" Margin="0" />
-                </Frame>
+                    <Image Source="news.png" Aspect="AspectFill"  Margin="0" />
             </StackLayout>
             <BoxView HeightRequest="1" BackgroundColor="#A9A9A9" Margin="0,15" />
 
