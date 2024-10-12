@@ -7,59 +7,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using WeatherApp.Helper;
 using WeatherApp.Models;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WeatherApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BottomPopupPage : PopupPage
+    public partial class LocationForecast : PopupPage
     {
-        private string Location { get; set; } = "Ireland";
+        private string Location { get; set; } = "Ireland"; // Localização padrão
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public BottomPopupPage()
+
+        public LocationForecast(string cityName)
         {
             InitializeComponent();
-            // Configurar a animação personalizada
-            GetCoordinates();
-
-        }
-        private async Task<string> GetCity(Location location)
-        {
-            var places = await Geocoding.GetPlacemarksAsync(location);
-            var currentPlace = places?.FirstOrDefault();
-
-            if (currentPlace != null)
-            {
-                // Priorize AdminArea ou SubAdminArea se estiver disponível para capturar a cidade corretamente
-                return !string.IsNullOrEmpty(currentPlace.SubAdminArea) ? currentPlace.SubAdminArea : currentPlace.AdminArea;
-            }
-            return null;
-        }
-        private async void GetCoordinates()
-        {
-            try
-            {
-                var request = new GeolocationRequest(GeolocationAccuracy.Default);
-                var location = await Geolocation.GetLocationAsync(request);
-
-                if (location != null)
-                {
-                    Latitude = location.Latitude;
-                    Longitude = location.Longitude;
-                    Location = await GetCity(location);
-
-                    // Após obter as coordenadas, chame o método para obter a previsão
-                    GetForecast();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                await DisplayAlert("Erro", "Não foi possível obter a localização.", "OK");
-            }
+            // Agora chamamos GetForecast passando o nome da cidade
+            GetForecast(cityName);
         }
 
         private async void OnCloseButtonClicked(object sender, EventArgs e)
@@ -67,18 +31,10 @@ namespace WeatherApp.Views
             await Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
         }
 
-
-        private async void GetForecast()
+        private async void GetForecast(string cityName)
         {
-            // Verifique se já temos as coordenadas antes de fazer a requisição da previsão
-            if (Latitude == 0 || Longitude == 0)
-            {
-                await DisplayAlert("Erro", "Não foi possível obter a localização.", "OK");
-                return;
-            }
-
-            // URL da API utilizando latitude e longitude
-            var url = $"https://api.openweathermap.org/data/2.5/forecast?lat={Latitude}&lon={Longitude}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric&lang=pt";
+            // URL da API utilizando o nome da cidade
+            var url = $"https://api.openweathermap.org/data/2.5/forecast?q={cityName}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric&lang=pt";
 
             var result = await ApiCaller.Get(url);
 
@@ -87,16 +43,18 @@ namespace WeatherApp.Views
                 try
                 {
                     var forecastInfo = JsonConvert.DeserializeObject<ForecastInfo>(result.Response);
-
                     List<List> allList = new List<List>();
 
+                    // Filtrar o forecast para pegar os dias à meia-noite
                     foreach (var list in forecastInfo.list)
                     {
                         var date = DateTime.Parse(list.dt_txt);
-
                         if (date > DateTime.Now && date.Hour == 0 && date.Minute == 0 && date.Second == 0)
+                        {
                             allList.Add(list);
+                        }
                     }
+
                     var cultureInfo = new CultureInfo("pt-BR");
 
                     // Função para abreviar os dias da semana
@@ -105,7 +63,7 @@ namespace WeatherApp.Views
                         return char.ToUpper(diaCompleto[0]) + diaCompleto.Substring(1, 2);
                     }
 
-                    // Atualizando os labels com os dias abreviados
+                    // Atualizando os labels com os dias abreviados e ícones
                     dayOneTxt.Text = AbreviarDiaDaSemana(DateTime.Parse(allList[0].dt_txt).ToString("dddd", cultureInfo));
                     dateOneTxt.Text = DateTime.Parse(allList[0].dt_txt).ToString("dd MMM", cultureInfo);
                     iconOneImg.Source = $"w{allList[0].weather[0].icon}";
@@ -140,9 +98,6 @@ namespace WeatherApp.Views
             {
                 await DisplayAlert("Weather Info", "No forecast information found", "OK");
             }
-
         }
-
     }
-
 }

@@ -57,7 +57,7 @@ namespace WeatherApp.Views
             {
                 try
                 {
-                    var url = $"https://api.openweathermap.org/data/2.5/weather?q={city.Name}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
+                    var url = $"https://api.openweathermap.org/data/2.5/weather?q={city.Name}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric&lang=pt";
                     var result = await ApiCaller.Get(url);
 
                     if (result.Successful)

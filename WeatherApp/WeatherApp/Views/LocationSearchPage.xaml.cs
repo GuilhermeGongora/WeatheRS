@@ -56,7 +56,7 @@ namespace WeatherApp.Views
             {
                 try
                 {
-                    var url = $"https://api.openweathermap.org/data/2.5/weather?q={city.Name}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
+                    var url = $"https://api.openweathermap.org/data/2.5/weather?q={city.Name}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric&lang=pt";
                     var result = await ApiCaller.Get(url);
 
                     if (result.Successful)
@@ -108,11 +108,11 @@ namespace WeatherApp.Views
             // Verifica se o campo de pesquisa não está vazio
             if (string.IsNullOrWhiteSpace(searchBar.Text))
             {
-                await DisplayAlert("Warning", "Please enter a city name.", "OK");
+                await DisplayAlert("Aviso!", "Digite um nome de uma localidade.", "OK");
                 return;
             }
 
-            var url = $"https://api.openweathermap.org/data/2.5/weather?q={searchBar.Text.Trim()}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
+            var url = $"https://api.openweathermap.org/data/2.5/weather?q={searchBar.Text.Trim()}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric&lang=pt";
 
             var result = await ApiCaller.Get(url);
             if (result.Successful)
@@ -133,7 +133,8 @@ namespace WeatherApp.Views
                             WindSpeed = weatherInfo.wind.speed,
                             Cloudiness = weatherInfo.clouds.all,
                             Icon = $"w{weatherInfo.weather[0].icon}",
-                            Date = DateTime.UtcNow
+                            Date = DateTime.UtcNow,
+                            Description = weatherInfo.weather[0].description // Adiciona a descrição do clima
                         };
 
                         // Salva a cidade no banco de dados

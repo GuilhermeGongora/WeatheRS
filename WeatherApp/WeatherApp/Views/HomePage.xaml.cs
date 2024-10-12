@@ -65,7 +65,7 @@ namespace WeatherApp.Views
                 var cityName = await GetCity(location);
 
                 // Obtém as informações meteorológicas da cidade
-                var url = $"https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
+                var url = $"https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric&lang=pt";
                 var result = await ApiCaller.Get(url);
 
                 if (result.Successful)
@@ -163,7 +163,7 @@ namespace WeatherApp.Views
 
         private async void GetWeatherInfo()
         {
-            var url = $"https://api.openweathermap.org/data/2.5/weather?q={Location}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric";
+            var url = $"https://api.openweathermap.org/data/2.5/weather?q={Location}&appid=0254e13028fbf335e64c91ff361ce46f&units=metric&lang=pt";
 
             var result = await ApiCaller.Get(url);
             if (result.Successful)

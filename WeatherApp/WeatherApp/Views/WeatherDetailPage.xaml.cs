@@ -1,5 +1,4 @@
-﻿// WeatherDetailPage.xaml.cs
-using Rg.Plugins.Popup.Services;
+﻿using Rg.Plugins.Popup.Services;
 using System;
 using WeatherApp.Models;
 using Xamarin.Forms;
@@ -8,14 +7,17 @@ namespace WeatherApp.Views
 {
     public partial class WeatherDetailPage : ContentPage
     {
+        private SavedCity _savedCity; // Variável de classe
+
         public WeatherDetailPage(SavedCity savedCity)
         {
             InitializeComponent();
+            _savedCity = savedCity; // Armazena o objeto na variável
 
             // Exibir informações na UI
             cityTxt.Text = savedCity.Name.ToUpperInvariant();
             temperatureTxt.Text = $"{savedCity.Temperature.ToString("F0")}";
-            descriptionTxt.Text = $"{savedCity.Description}";
+            descriptionTxt.Text = $"{savedCity.Description}".ToUpperInvariant();
             humidityTxt.Text = $"{savedCity.Humidity}%";
             pressureTxt.Text = $"{savedCity.Pressure} hPa";
             windTxt.Text = $"{savedCity.WindSpeed.ToString("F0")} m/s";
@@ -26,15 +28,15 @@ namespace WeatherApp.Views
 
             // Atualiza a fonte da imagem com o ícone correto
             iconImg.Source = iconName;
-
-
         }
+
         private async void OnOpenPopupButtonClicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new BottomPopupPage());
+            // Usa a variável de classe
+            string cityName = _savedCity.Name;
+
+            // Passa apenas o nome da cidade para LocationForecast
+            await PopupNavigation.Instance.PushAsync(new LocationForecast(cityName));
         }
-
-      
-
     }
 }
