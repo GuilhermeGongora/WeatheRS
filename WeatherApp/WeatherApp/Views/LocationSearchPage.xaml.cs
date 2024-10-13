@@ -48,6 +48,29 @@ namespace WeatherApp.Views
         {
             await LoadCitiesAsync(); // Recarrega a lista de cidades
         }
+        private async void OnCityTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null) return;
+
+            var tappedCity = e.Item as SavedCity;
+
+            if (tappedCity != null)
+            {
+                // Confirmação de exclusão
+                bool delete = await DisplayAlert("Excluir Cidade", $"Você deseja excluir {tappedCity.Name}?", "Sim", "Não");
+
+                if (delete)
+                {
+                    // Remover o item do banco de dados
+                    await App.Database.DeleteCityAsync(tappedCity);
+                    await LoadCitiesAsync(); // Atualiza a lista de cidades
+                }
+            }
+
+            // Deselecionar o item para evitar problemas de UI
+            citiesListView.SelectedItem = null;
+        }
+
 
         // Método para atualizar os dados das cidades
         private async Task UpdateCitiesData(List<SavedCity> cities)
@@ -93,15 +116,27 @@ namespace WeatherApp.Views
             var menuItem = (MenuItem)sender;
             var cityToDelete = (SavedCity)menuItem.CommandParameter;
 
-            // Confirmação de exclusão
-            var confirmed = await DisplayAlert("Delete", $"Are you sure you want to delete {cityToDelete.Name}?", "Yes", "No");
+            var confirmed = await DisplayAlert("Excluir", $"Tem certeza que deseja excluir {cityToDelete.Name}?", "Sim", "Não");
             if (confirmed)
             {
-                // Exclui a cidade do banco de dados
                 await App.Database.DeleteCityAsync(cityToDelete);
-                await LoadCitiesAsync(); // Recarrega a lista de cidades
+                await LoadCitiesAsync();
             }
         }
+        private async void OnDeleteSwipeItemInvoked(object sender, EventArgs e)
+        {
+            var swipeItem = (SwipeItem)sender;
+            var cityToDelete = (SavedCity)swipeItem.CommandParameter;
+
+            // Confirmação de exclusão
+            var confirmed = await DisplayAlert("Excluir", $"Você deseja excluir {cityToDelete.Name}?", "Sim", "Não");
+            if (confirmed)
+            {
+                await App.Database.DeleteCityAsync(cityToDelete);
+                await LoadCitiesAsync(); // Atualiza a lista de cidades
+            }
+        }
+
 
         private async void OnSearchButtonPressed(object sender, EventArgs e)
         {
@@ -147,7 +182,7 @@ namespace WeatherApp.Views
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error processing weather data: {ex.Message}");
-                    await DisplayAlert("Weather Info", "Error processing weather data", "OK");
+                    await DisplayAlert("Informações do clima.", "Erro ao processar os dados do clima.", "OK!");
                 }
             }
             else

@@ -44,36 +44,46 @@
                     CornerRadius="10" />
 
             <!-- Lista de cidades -->
-            <ListView x:Name="citiesListView" 
-                      ItemSelected="OnCitySelected" 
-                      SeparatorColor="#A9A9A9" 
-                      BackgroundColor="Transparent"
-                      RowHeight="80">
+            <ListView x:Name="citiesListView"
+          SeparatorColor="#A9A9A9"
+          BackgroundColor="Transparent"
+          RowHeight="80">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame BackgroundColor="#3E3E3E" 
-                                   CornerRadius="15" 
-                                   Margin="5" 
-                                   Padding="10">
-                                <StackLayout Orientation="Horizontal" Padding="5">
-                                    <Image Source="{Binding Icon}" 
-                                           WidthRequest="50" 
-                                           HeightRequest="50" />
-                                    <StackLayout VerticalOptions="Center" Padding="10,0">
-                                        <Label Text="{Binding Name}" 
-                                               FontSize="20" 
-                                               TextColor="White" />
-                                        <Label Text="{Binding Temperature, StringFormat='{0:0.}°C'}" 
-                                               FontSize="16" 
-                                               TextColor="LightGray" />
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItem Text="Excluir"
+                                   BackgroundColor="Red"
+                                   CommandParameter="{Binding .}"
+                                   Invoked="OnDeleteSwipeItemInvoked"
+                                               
+                                   IconImageSource="deleteCity.png" />
+                                </SwipeView.RightItems>
+                                <Frame BackgroundColor="#3E3E3E" 
+                           CornerRadius="15" 
+                           Margin="5" 
+                           Padding="10">
+                                    <StackLayout Orientation="Horizontal" Padding="5">
+                                        <Image Source="{Binding Icon}" 
+                                   WidthRequest="50" 
+                                   HeightRequest="50" />
+                                        <StackLayout VerticalOptions="Center" Padding="10,0">
+                                            <Label Text="{Binding Name}" 
+                                       FontSize="20" 
+                                       TextColor="White" />
+                                            <Label Text="{Binding Temperature, StringFormat='{0:0.}°C'}" 
+                                       FontSize="16" 
+                                       TextColor="LightGray" />
+                                        </StackLayout>
                                     </StackLayout>
-                                </StackLayout>
-                            </Frame>
+                                </Frame>
+                            </SwipeView>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
