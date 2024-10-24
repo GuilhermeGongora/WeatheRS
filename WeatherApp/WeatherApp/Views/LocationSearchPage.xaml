@@ -2,79 +2,77 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Views.LocationSearchPage"
-             BackgroundColor="#1E1E1E">
+             BackgroundColor="Transparent">
     <ContentPage.Content>
         <StackLayout Padding="20" Spacing="15">
             <!-- Título -->
-            <Label Text="Buscar Cidade"
-                   FontSize="24"
+            <Label Text="Gerenciar cidades."
+                   FontSize="30"
+                   FontFamily="Verdana"
                    FontAttributes="Bold"
                    TextColor="White"
-                   HorizontalOptions="Center" />
+                   HorizontalOptions="Start"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="0, 10" />
 
             <!-- Barra de pesquisa -->
-            <Frame CornerRadius="25" BackgroundColor="#3E3E3E" Padding="5">
-                <!-- Cor de fundo do Frame -->
+            <Frame CornerRadius="25" 
+                   BackgroundColor="#3E3E3E" 
+                   Padding="5"
+                   HasShadow="True"
+                   HeightRequest="50">
                 <SearchBar x:Name="searchBar"
-                           Placeholder="Digite o nome da cidade"
+                           Placeholder="Inserir local"
                            TextColor="White" 
                            BackgroundColor="Transparent"
                            PlaceholderColor="#A9A9A9"
                            HeightRequest="40"
-                             Margin="0, 0, 0, 0" 
-                   />
+                           Margin="0,0,0,0" 
+                           FontSize="16"
+                           SearchButtonPressed="OnSearchButtonPressed" />
             </Frame>
-
-            <!-- Botão de pesquisa -->
-            <Button Text="Buscar"
-                    Clicked="OnSearchButtonPressed"
-                    BackgroundColor="#4CAF50" 
-                    TextColor="White"
-                    HeightRequest="50" 
-                    FontSize="18" 
-                    CornerRadius="10" />
-
-            <!-- Botão para recarregar dados -->
-            <Button Text="Atualizar" 
-                    Clicked="OnReloadButtonClicked" 
-                    BackgroundColor="#FF9800"
-                    TextColor="White"
-                    HeightRequest="50" 
-                    FontSize="18" 
-                    CornerRadius="10" />
 
             <!-- Lista de cidades -->
             <ListView x:Name="citiesListView"
-          SeparatorColor="#A9A9A9"
-          BackgroundColor="Transparent"
-          RowHeight="80">
+                      ItemSelected="OnCitySelected"
+                      SeparatorColor="Transparent" 
+                      SeparatorVisibility="None" 
+                      BackgroundColor="Transparent"
+                      HasUnevenRows="True"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                Margin="0,5,0,0">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <SwipeView>
                                 <SwipeView.RightItems>
                                     <SwipeItem Text="Excluir"
-                                   BackgroundColor="Red"
-                                   CommandParameter="{Binding .}"
-                                   Invoked="OnDeleteSwipeItemInvoked"
-                                               
-                                   IconImageSource="deleteCity.png" />
+                                               BackgroundColor="Transparent"
+                                               CommandParameter="{Binding .}"
+                                               Invoked="OnDeleteSwipeItemInvoked"
+                                               IconImageSource="deleteCity.png"  />
                                 </SwipeView.RightItems>
-                                <Frame BackgroundColor="#3E3E3E" 
-                           CornerRadius="15" 
-                           Margin="5" 
-                           Padding="10">
-                                    <StackLayout Orientation="Horizontal" Padding="5">
+                                <Frame BackgroundColor="#325a9c" 
+                                       CornerRadius="15" 
+                                       Margin="10, 5"
+                                       Padding="10"
+                                       HasShadow="True">
+                                    <StackLayout Orientation="Horizontal" Padding="5" BackgroundColor="#325a9c">
                                         <Image Source="{Binding Icon}" 
-                                   WidthRequest="50" 
-                                   HeightRequest="50" />
+                                               WidthRequest="50" 
+                                               HeightRequest="50"
+                                               Aspect="AspectFit" 
+                                               Margin="0,0,10,0" />
                                         <StackLayout VerticalOptions="Center" Padding="10,0">
                                             <Label Text="{Binding Name}" 
-                                       FontSize="20" 
-                                       TextColor="White" />
+                                                   FontSize="20" 
+                                                   TextColor="White" 
+                                                   FontAttributes="Bold" />
                                             <Label Text="{Binding Temperature, StringFormat='{0:0.}°C'}" 
-                                       FontSize="16" 
-                                       TextColor="LightGray" />
+                                                   FontSize="16" 
+                                                   TextColor="LightGray" />
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
