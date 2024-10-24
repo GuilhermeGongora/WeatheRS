@@ -8,7 +8,7 @@ using WeatherApp.Helper;
 public class NewsService
 {
     private const string ApiKey = "28157a775eee43ef8bb6739605164b24"; // Adicione sua chave da API aqui
-    private const string BaseUrl = "https://newsapi.org/v2/everything?q=queimadas OR \"mudanças climáticas\" OR sustentabilidade OR \"aquecimento global\" OR poluição OR \"energia renovável\"&sortBy=publishedAt&language=pt&apiKey=";
+    private const string BaseUrl = "https://newsapi.org/v2/everything?q=ciencia OR \"mudanças climáticas\" OR sustentabilidade OR \"aquecimento global\" OR poluição OR \"energia renovável\"&sortBy=publishedAt&language=pt&apiKey=";
 
     public async Task<List<NewsArticle>> GetNewsAsync()
     {

@@ -7,10 +7,10 @@
         <StackLayout Padding="20" Spacing="15">
             <!-- Título -->
             <Label Text="Gerenciar cidades."
-                   FontSize="30"
+                   FontSize="40"
                    FontFamily="Verdana"
                    FontAttributes="Bold"
-                   TextColor="White"
+                   TextColor="#7585BA"
                    HorizontalOptions="Start"
                    VerticalOptions="CenterAndExpand"
                    Margin="0, 10" />
@@ -33,12 +33,13 @@
             </Frame>
 
             <!-- Lista de cidades -->
-            <ListView x:Name="citiesListView"
+                <ListView x:Name="citiesListView"
+                      
                       ItemSelected="OnCitySelected"
                       SeparatorColor="Transparent" 
-                      SeparatorVisibility="None" 
-                      BackgroundColor="Transparent"
+                      SeparatorVisibility="Default" 
                       HasUnevenRows="True"
+                      
                       VerticalOptions="FillAndExpand"
                       HorizontalOptions="FillAndExpand"
                 Margin="0,5,0,0">
@@ -48,15 +49,17 @@
                         <ViewCell>
                             <SwipeView>
                                 <SwipeView.RightItems>
-                                    <SwipeItem Text="Excluir"
+                                    <SwipeItem 
                                                BackgroundColor="Transparent"
+                                               
                                                CommandParameter="{Binding .}"
                                                Invoked="OnDeleteSwipeItemInvoked"
-                                               IconImageSource="deleteCity.png"  />
+                                               IconImageSource="trash.png"  />
                                 </SwipeView.RightItems>
                                 <Frame BackgroundColor="#325a9c" 
-                                       CornerRadius="15" 
                                        Margin="10, 5"
+                                       CornerRadius="15"
+                                       BorderColor="Black"
                                        Padding="10"
                                        HasShadow="True">
                                     <StackLayout Orientation="Horizontal" Padding="5" BackgroundColor="#325a9c">
@@ -81,7 +84,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

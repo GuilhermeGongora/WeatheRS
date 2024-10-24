@@ -12,14 +12,14 @@
                         <ImageButton Source="guiDev.png" 
                                WidthRequest="80" 
                                HeightRequest="80" 
-                               Aspect="AspectFill" Clicked="OnImageButtonClicked" CommandParameter="https://www.instagram.com/gui.gng/"/>
+                               Aspect="AspectFill" Clicked="OnImageButtonClicked" CommandParameter="https://www.linkedin.com/in/guilherme-gongora-5581b0281/"/>
                     </Frame>
                     <StackLayout>
                         <Label Text="Guilherme A. Gongora"
                                FontSize="20" 
                                TextColor="White" 
                                FontAttributes="Bold"/>
-                        <Label Text="Descrição do desenvolvedor 1. Informações sobre suas habilidades e contribuições."
+                        <Label Text="Guilherme A. Gongora - 17 anos, aluno da FORTEC Praia Grande e está cursando o terceiro ano do Ensino Médio Técnico em Informática. Foi responsável pela programação e idealização do projeto."
                                FontSize="14" 
                                TextColor="LightGray"/>
                     </StackLayout>
@@ -32,14 +32,14 @@
                         <ImageButton Source="nayaraDev.jpeg" 
                                WidthRequest="80" 
                                HeightRequest="80" 
-                               Aspect="AspectFill" Clicked="OnImageButtonClicked" CommandParameter="https://www.instagram.com/mendoncansy/"/>
+                               Aspect="AspectFill" Clicked="OnImageButtonClicked" CommandParameter="https://www.linkedin.com/in/nayaramm"/>
                     </Frame>
                     <StackLayout>
                         <Label Text="Nayara de Melo Mendonça"
                                FontSize="20" 
                                TextColor="White" 
                                FontAttributes="Bold"/>
-                        <Label Text="Descrição do desenvolvedor 2. Informações sobre suas habilidades e contribuições."
+                        <Label Text="Nayara Mendonça - 17 anos, aluna da FORTEC de Praia Grande e está cursando o terceiro ano do Ensino Médio Técnico em Informática. Foi responsável pelo UI e UX do projeto."
                                FontSize="14" 
                                TextColor="LightGray"/>
                     </StackLayout>
@@ -57,7 +57,7 @@
                               FontSize="20" 
                               TextColor="White" 
                               FontAttributes="Bold"/>
-                        <Label Text="Descrição do desenvolvedor 1. Informações sobre suas habilidades e contribuições."
+                        <Label Text="Júlia I. Arbucias - 17 anos, aluna da FORTEC Praia Grande e está cursando o terceiro ano do Ensino Médio Técnico em Informática. Foi responsável pela UI e UX do projeto."
                               FontSize="14" 
                               TextColor="LightGray"/>
                     </StackLayout>
@@ -75,7 +75,7 @@
                                FontSize="20" 
                                TextColor="White" 
                                FontAttributes="Bold"/>
-                        <Label Text="Descrição do desenvolvedor 1. Informações sobre suas habilidades e contribuições."
+                        <Label Text="Rodrigo C. Gomes - 17 anos, aluno da FORTEC Praia Grande e está cursando o terceiro ano do Ensino Médio Técnico em Informática. Foi responsável pela programação e idealização do projeto"
                                FontSize="14" 
                                TextColor="LightGray"/>
                     </StackLayout>
@@ -88,14 +88,14 @@
                         <ImageButton Source="xicoDev.png" 
                                WidthRequest="80" 
                                HeightRequest="80" 
-                               Aspect="AspectFill" Clicked="OnImageButtonClicked" CommandParameter="https://www.instagram.com/p.joao.x/"/>
+                               Aspect="AspectFill" Clicked="OnImageButtonClicked" CommandParameter="https://www.linkedin.com/in/jo%C3%A3o-pedro-910b40269/"/>
                     </Frame>
                     <StackLayout>
                         <Label Text="João Pedro R. Oliveira"
                                FontSize="20" 
                                TextColor="White" 
                                FontAttributes="Bold"/>
-                        <Label Text="Descrição do desenvolvedor 2. Informações sobre suas habilidades e contribuições."
+                        <Label Text="João Pedro R.- 17 anos, aluno da FORTEC Praia Grande e está cursando o terceiro ano do Ensino Médio Técnico em Informática. Foi responsável pelo UI/UX e idealização do projeto"
                                FontSize="14" 
                                TextColor="LightGray"/>
                     </StackLayout>
@@ -108,14 +108,14 @@
                         <ImageButton Source="samDev.png" 
                                WidthRequest="80" 
                                HeightRequest="80" 
-                               Aspect="AspectFill"  Clicked="OnImageButtonClicked" CommandParameter="https://www.instagram.com/samia.camelo/"/>
+                               Aspect="AspectFill"  Clicked="OnImageButtonClicked" CommandParameter="https://www.linkedin.com/in/samia-camelo-55266a261/"/>
                     </Frame>
                     <StackLayout>
                         <Label Text="Samia Di Fiori"
                                FontSize="20" 
                                TextColor="White" 
                                FontAttributes="Bold"/>
-                        <Label Text="Descrição do desenvolvedor 2. Informações sobre suas habilidades e contribuições."
+                        <Label Text="Samia Di Fiori - 18 anos, aluna da FORTEC Praia Grande e está cursando o terceiro ano do Ensino Médio Técnico em Informática. Foi responsável pela organização e decoração."
                                FontSize="14" 
                                TextColor="LightGray"/>
                     </StackLayout>
@@ -133,7 +133,8 @@
                                FontSize="20" 
                                TextColor="White" 
                                FontAttributes="Bold"/>
-                        <Label Text="Descrição do desenvolvedor 2. Informações sobre suas habilidades e contribuições."
+                        <Label Text="Tarick Gabriel - 18 anos, aluno da FORTEC Praia Grande e está cursando o terceiro ano do Ensino Médio Técnico em Informática. Foi responsável pela organização e idealização do projeto.
+                               "
                                FontSize="14" 
                                TextColor="LightGray"/>
                     </StackLayout>

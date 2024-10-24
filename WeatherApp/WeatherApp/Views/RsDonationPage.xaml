@@ -17,11 +17,10 @@
                     <StackLayout>
                         <Label Text="SOS Rio Grande do Sul"
                                FontSize="20" 
-                               TextColor="White" 
+                               TextColor="#7585BA" 
                                FontAttributes="Bold"/>
                         <Label Text="A iniciativa SOS Rio Grande do Sul mobiliza recursos e apoio para as vítimas de enchentes e desastres naturais. Suas ações visam proporcionar ajuda imediata e recuperação às comunidades afetadas. "
-                               FontSize="14" 
-                               TextColor="LightGray"/>
+                               FontSize="14"  TextColor="#7585BA"/>
                     </StackLayout>
                 </StackLayout>
                 
@@ -39,11 +38,11 @@
                     <StackLayout>
                         <Label Text="ACNUR"
                                FontSize="20" 
-                               TextColor="White" 
+                               TextColor="#7585BA"
                                FontAttributes="Bold"/>
                         <Label Text="Contribua para a ajuda humanitária em situações de emergência, como as enchentes no Sul do Brasil. Faça sua doação e ajude a levar apoio a quem precisa."
                                FontSize="14" 
-                               TextColor="LightGray"/>
+                               TextColor="#7585BA"/>
                     </StackLayout>
                 </StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="#A9A9A9" />
@@ -58,11 +57,11 @@
                     <StackLayout>
                         <Label Text="Para Quem Doar"
                FontSize="20" 
-               TextColor="White" 
+               TextColor="#7585BA"
                FontAttributes="Bold"/>
                         <Label Text="Para Quem Doar é uma iniciativa da Globo que conecta doadores a organizações que auxiliam comunidades afetadas por desastres, como as enchentes no Sul do Brasil."
                FontSize="14" 
-               TextColor="LightGray"/>
+               TextColor="#7585BA"/>
                     </StackLayout>
                 </StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="#A9A9A9" />
@@ -79,11 +78,11 @@
                     <StackLayout>
                         <Label Text="Defesa Civil RS"
                FontSize="20" 
-               TextColor="White" 
+               TextColor="#7585BA"
                FontAttributes="Bold"/>
                         <Label Text="A Defesa Civil do RS coordena ações para socorrer e apoiar vítimas das enchentes. Contribua para fortalecer as ações de socorro e assistência."
                FontSize="14" 
-               TextColor="LightGray"/>
+               TextColor="#7585BA"/>
                     </StackLayout>
                 </StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="#A9A9A9" />
@@ -100,11 +99,11 @@
                     <StackLayout>
                         <Label Text="UNICEF"
                FontSize="20" 
-               TextColor="White" 
+               TextColor="#7585BA"
                FontAttributes="Bold"/>
                         <Label Text="O UNICEF atua na proteção de crianças e famílias afetadas por desastres. Faça parte dessa corrente de solidariedade com sua doação."
                FontSize="14" 
-               TextColor="LightGray"/>
+               TextColor="#7585BA"/>
                     </StackLayout>
                 </StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="#A9A9A9" />

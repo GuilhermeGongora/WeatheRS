@@ -11,7 +11,7 @@
         <ListView.ItemsSource>
             <x:Array Type="{x:Type local:FlyoutItemPage}">
                 <local:FlyoutItemPage Title="Início" IconSource="sun.png"  targetPage="{x:Type local:HomePage}"/>
-                    <local:FlyoutItemPage Title="Meus locais" IconSource="search.png" targetPage="{x:Type local:LocationSearchPage}"/>
+                    <local:FlyoutItemPage   Title="Meus locais" IconSource="search.png" targetPage="{x:Type local:LocationSearchPage}"/>
                     <local:FlyoutItemPage Title="Notícias" IconSource="news.png" targetPage="{x:Type local:NewsPage}"/>
                     <local:FlyoutItemPage Title="Doação RS" IconSource="RioGrandeDoSul.png" targetPage="{x:Type local:RsDonationPage}"/>
                     <local:FlyoutItemPage Title="Desenvolvedores" IconSource="about.png" targetPage="{x:Type local:AboutPage}"/>
@@ -28,7 +28,7 @@
                         </Grid.ColumnDefinitions>
                         <Image Source="{Binding IconSource}" />
                         <Label Grid.Column="1" Text="{Binding Title}"
-                               VerticalOptions="Center"/>
+                               VerticalOptions="Center" TextColor="White"/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>

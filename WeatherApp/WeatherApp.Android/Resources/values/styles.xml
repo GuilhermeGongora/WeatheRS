@@ -3,15 +3,11 @@
 
 	<style name="MainTheme" parent="MainTheme.Base">
 		<!-- Define as cores do tema -->
-		<item name="colorPrimary">@android:color/transparent</item>
-		<item name="colorPrimaryDark">@android:color/transparent</item>
-		<item name="colorAccent">#FF4081</item>
+	
 		<!-- Ou qualquer outra cor que você deseja -->
 	</style>
 
 	<style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-		<item name="colorPrimary">@android:color/transparent</item>
-		<item name="colorPrimaryDark">@android:color/transparent</item>
 	</style>
 	
 

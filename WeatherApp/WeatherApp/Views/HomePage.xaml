@@ -31,8 +31,8 @@
                                 <Label x:Name="descriptionTxt" Text="Cloudy" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
                             </StackLayout>
                             <StackLayout VerticalOptions="Center">
-                                <Label x:Name="cityTxt" Text="LONDON" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                <Label x:Name="dateTxt" Text="SATURDAY, NOV 30" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                                <Label x:Name="cityTxt" Text="Loading..." TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label x:Name="dateTxt" Text="Loading..." TextColor="White" FontSize="13" HorizontalOptions="Center"/>
                             </StackLayout>
                         </StackLayout>
 
@@ -87,7 +87,7 @@
                                     <StackLayout Orientation="Vertical" Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                         <Image Source="gauge.png" HeightRequest="35" HorizontalOptions="Center"/>
                                         <Label x:Name="pressureTxt" Text="1011 hPa" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                        <Label Text="Pressure" TextColor="White" FontSize="12" HorizontalOptions="Center" VerticalOptions="Start"/>
+                                        <Label Text="Pressão" TextColor="White" FontSize="12" HorizontalOptions="Center" VerticalOptions="Start"/>
                                     </StackLayout>
                                 </AbsoluteLayout>
                             </Frame>
