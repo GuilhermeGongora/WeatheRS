@@ -24,8 +24,8 @@ Projeto criado para a expotec, visando um planeta mais sustentável.
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- HTML e CSS
-- JavaScript
+- C#
+- Xamarin Forms
 - Git e Github
 - Figma
 
