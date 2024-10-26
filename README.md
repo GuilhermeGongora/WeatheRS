@@ -17,7 +17,7 @@ Projeto criado para a expotec, visando um planeta mais sustentável.
 <br>
 
 <p align="center">
-  <img alt="Projeto DevLinks" src="github/Preview.png" width="100%">
+  <img alt="Projeto WeatheRS" src="github/Preview.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
