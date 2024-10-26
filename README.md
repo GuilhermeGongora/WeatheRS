@@ -17,7 +17,7 @@ Projeto criado para a expotec, visando um planeta mais sustentável.
 <br>
 
 <p align="center">
-  <img alt="Projeto WeatheRS" src="WeatherApp/WeatherApp/Github/Preview.jpeg" width="100%">
+  <img alt="Projeto WeatheRS" src="WeatherApp/WeatherApp/Github/Preview.jpeg" width="80%">
 </p>
 
 ## 🚀 Tecnologias
